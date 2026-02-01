@@ -103,11 +103,19 @@ ${message}
 ## YOUR ANSWER
 `.trim();
 
-    // Gemini API version fallback (Jan 2026 free tier, highest to lowest)
+    // Gemini API version fallback (Jan 2026 - highest to lowest)
+    // Try latest/experimental first, fall back to stable versions
     const modelVersions = [
-      "gemini-1.5-flash",          // Standard flash (most stable)
-      "gemini-1.5-flash-latest",   // Latest stable flash
-      "gemini-1.5-pro",            // Pro version (if quota available)
+      "gemini-2.0-flash-exp",           // 🚀 Latest experimental (free, fastest)
+      "gemini-1.5-flash-latest",        // ✅ Latest stable flash
+      "gemini-1.5-flash-002",           // 📌 Specific stable version
+      "gemini-1.5-flash",               // 🔷 Standard flash (reliable)
+      "gemini-1.5-flash-8b-latest",     // ⚡ Latest lightweight
+      "gemini-1.5-flash-8b",            // 💨 Lightweight (fast, lower cost)
+      "gemini-1.5-pro-latest",          // 🎯 Pro latest (higher quality)
+      "gemini-1.5-pro-002",             // 🎯 Pro specific version
+      "gemini-1.5-pro",                 // 💎 Pro standard
+      "gemini-pro",                     // 📦 Legacy pro fallback
     ];
 
     let lastError: Error | null = null;
