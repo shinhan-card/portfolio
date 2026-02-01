@@ -50,33 +50,23 @@ export default function Hero() {
       <div className="container-premium relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-fade-up">
-            {/* Top label — small, mono, muted */}
-            <p className="text-xs font-mono uppercase tracking-widest text-muted2 mb-8 flex items-center justify-center gap-2">
-              <span>💼</span>
-              {t("hero.label")}
+            {/* Name — H1, largest, primary */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text mb-4 sm:mb-5 tracking-tight">
+              {t("hero.name")}
+            </h1>
+
+            {/* Role & Company — H2, unified line */}
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-muted mb-6 sm:mb-8">
+              {t("hero.roleCompany")}
+            </h2>
+
+            {/* Tagline — strong single sentence */}
+            <p className="text-base sm:text-lg md:text-xl text-muted2 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+              {t("hero.tagline")}
             </p>
 
-            {/* Role & Seniority — clear and prominent */}
-            <div className="mb-5 sm:mb-6 flex items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-xl font-medium text-muted flex-wrap">
-              <span>{t("hero.role")}</span>
-              <span className="text-accent">@</span>
-              <span className="font-semibold text-text">{t("hero.company")}</span>
-            </div>
-
-            {/* Domain badges */}
-            <div className="mb-6 sm:mb-8 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-              {t("hero.domain").split(" · ").map((domain: string, i: number) => {
-                const emojis = ["💳", "🏦", "🔐"];
-                return (
-                  <Badge key={i} variant="accent" emoji={emojis[i]} className="text-xs sm:text-sm px-3 sm:px-4 py-1 sm:py-1.5">
-                    {domain}
-                  </Badge>
-                );
-              })}
-            </div>
-
             {/* Profile photo — circular crop, centered with decorative ring */}
-            <div className="flex justify-center mb-8 sm:mb-10">
+            <div className="flex justify-center mb-10 sm:mb-12">
               <div className="relative group">
                 {/* Decorative rotating ring */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 via-accent/5 to-transparent blur-xl group-hover:blur-2xl transition-all duration-500" />
@@ -85,7 +75,7 @@ export default function Hero() {
                 <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden ring-2 ring-accent/20 hover:ring-accent/40 bg-surface2 shrink-0 transition-all duration-300 shadow-xl hover:shadow-2xl">
                   <Image
                     src="/images/profile.png"
-                    alt=""
+                    alt="Eric Yoon"
                     fill
                     className="object-cover object-center scale-100"
                     sizes="(max-width: 768px) 144px, 176px"
@@ -99,16 +89,6 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-
-            {/* Main headline — structural, calm, confident */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text mb-6 sm:mb-8 max-w-4xl mx-auto leading-tight tracking-tight whitespace-pre-line">
-              {t("hero.value")}
-            </h1>
-
-            {/* Supporting subheadline — explanatory, architectural */}
-            <p className="text-base sm:text-lg md:text-xl text-muted mb-12 sm:mb-14 max-w-3xl mx-auto leading-relaxed font-light whitespace-pre-line">
-              {t("hero.description")}
-            </p>
 
             {/* CTAs — Three options */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

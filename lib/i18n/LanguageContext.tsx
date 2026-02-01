@@ -71,17 +71,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.downloadResume": "Download Resume",
 
-    // Hero — role, seniority, domain (no name; name is in header)
-    "hero.label": "Shinhan Card · Payment Innovation Office",
-    "hero.name": "Eric Yoon",
-    "hero.role": "Product Manager (9 years)",
-    "hero.company": "Shinhan Card",
-    "hero.domain": "Payments · Fintech · Authentication",
-    "hero.title": "Payments & Fintech Product Manager",
-    "hero.subtitle": "Pro (Manager) · 9 Years PM\nPayment · Fintech · Authentication",
-    "hero.value": "Making fintech services that actually work\nunder complex constraints.",
-    "hero.description":
-      "Balancing regulation, security, and organizational reality\nto make technology, people, and processes move together.",
+    // Hero — refactored for clarity and reduced redundancy
+    "hero.name": "Eric Yoon (윤태웅)",
+    "hero.roleCompany": "Manager @ Shinhan Card",
+    "hero.tagline": "Making Fintech Work in Regulated Markets",
     "hero.cta.primary": "View Resume",
     "hero.cta.secondary": "View Projects",
     "hero.cta.all": "View All Projects",
@@ -225,17 +218,10 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.downloadResume": "이력서",
 
-    // Hero — 승인 한국어 (이름은 헤더에만, 1인칭 사용 안 함)
-    "hero.label": "신한카드 · 페이먼트혁신실",
-    "hero.name": "윤태웅",
-    "hero.role": "프로덕트 매니저 (9년차)",
-    "hero.company": "신한카드",
-    "hero.domain": "결제 · 핀테크 · 인증",
-    "hero.title": "Payments & Fintech Product Manager",
-    "hero.subtitle": "프로(과장) · 9년차 PM\nPayment · Fintech · 인증(Authentication)",
-    "hero.value": "복잡한 제약 속에서도\n실제로 작동하는 핀테크 서비스를 기획합니다.",
-    "hero.description":
-      "규제·보안·조직 현실을 고려해\n기술과 사람, 프로세스가 함께 움직이게 만듭니다.",
+    // Hero — 간결하고 명확한 구조
+    "hero.name": "윤태웅 (Eric Yoon)",
+    "hero.roleCompany": "Manager @ 신한카드",
+    "hero.tagline": "규제 시장에서 작동하는 핀테크를 만듭니다",
     "hero.cta.primary": "이력 보기",
     "hero.cta.secondary": "주요 프로젝트",
     "hero.cta.all": "전체 프로젝트",
