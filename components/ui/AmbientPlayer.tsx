@@ -143,14 +143,13 @@ export default function AmbientPlayer() {
             
             {/* Hint tooltip - soft hint style */}
             {showHint && (
-              <div className="absolute bottom-full left-0 mb-3 animate-fade-in pointer-events-none">
-                <div className="relative bg-accent/95 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2 whitespace-nowrap">
-                  <p className="text-xs text-white font-medium flex items-center gap-1.5">
-                    <span className="text-sm">🎵</span>
-                    <span>Click for Music</span>
+              <div className="absolute bottom-full left-0 mb-3 animate-fade-in pointer-events-none max-w-[280px]">
+                <div className="relative bg-accent/95 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2">
+                  <p className="text-xs text-white font-medium leading-relaxed">
+                    <span className="text-sm">🎵</span> 만약 음악이 자동 재생되지 않으면 아래 버튼에서 한번 멈췄다가 다시 재생해주세요 :)
                   </p>
                   {/* Arrow pointing down */}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-accent/95" />
+                  <div className="absolute top-full left-6 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-accent/95" />
                 </div>
               </div>
             )}

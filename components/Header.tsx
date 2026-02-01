@@ -124,36 +124,6 @@ export default function Header() {
               >
                 <Keyboard className="w-4 h-4" strokeWidth={2} />
               </button>
-              {sound && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    sound.setUiSoundEnabled(!sound.uiSoundEnabled);
-                    sound.playToggle(!sound.uiSoundEnabled);
-                  }}
-                  className={`inline-flex items-center justify-center w-9 h-9 rounded-md border border-transparent hover:border-border bg-transparent hover:bg-surface2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${sound.uiSoundEnabled ? "text-accent" : "text-muted hover:text-text"}`}
-                  aria-label={sound.uiSoundEnabled ? "Turn off UI sounds" : "Turn on UI sounds"}
-                >
-                  <Waves className="w-4 h-4" strokeWidth={2} />
-                </button>
-              )}
-              {ambient && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    ambient.togglePlay();
-                    sound?.playToggle(!ambient.isPlaying);
-                  }}
-                  className="inline-flex items-center justify-center w-9 h-9 rounded-md text-muted hover:text-text border border-transparent hover:border-border bg-transparent hover:bg-surface2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-                  aria-label={ambient.isPlaying ? "Turn off BGM" : "Turn on BGM"}
-                >
-                  {ambient.isPlaying ? (
-                    <Volume2 className="w-4 h-4" strokeWidth={2} />
-                  ) : (
-                    <VolumeX className="w-4 h-4" strokeWidth={2} />
-                  )}
-                </button>
-              )}
             </div>
 
             {/* Mobile: hamburger only */}
