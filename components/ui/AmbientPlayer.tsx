@@ -3,9 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX, Play, Pause, Music } from "lucide-react";
 import { useAmbient } from "@/lib/ambient/AmbientContext";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function AmbientPlayer() {
   const ambient = useAmbient();
+  const { t } = useLanguage();
   const isPlaying = ambient?.isPlaying ?? false;
   const togglePlayContext = ambient?.togglePlay ?? (() => {});
 
@@ -148,9 +150,8 @@ export default function AmbientPlayer() {
             {showHint && (
               <div className="absolute bottom-full left-0 mb-2 animate-fade-in pointer-events-none">
                 <div className="relative bg-surface2/95 backdrop-blur-sm border border-border rounded-md shadow-md px-3 py-2 w-64">
-                  <p className="text-xs leading-relaxed text-muted">
-                    음악 자동재생 안되면<br />
-                    한번 멈췄다 재생해보세요 🎵
+                  <p className="text-xs leading-relaxed text-muted whitespace-pre-line">
+                    {t("bgm.hint")}
                   </p>
                   {/* Arrow pointing down */}
                   <div className="absolute top-full left-4 w-0 h-0 border-l-[5px] border-r-[5px] border-t-[5px] border-l-transparent border-r-transparent border-t-surface2/95" />
@@ -168,7 +169,7 @@ export default function AmbientPlayer() {
         ) : (
           <div className="bg-surface border border-border rounded-xl shadow-lg p-4 w-64 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-text">Ambient Sound</span>
+              <span className="text-sm font-medium text-text">{t("bgm.title")}</span>
               <button
                 onClick={() => setIsVisible(false)}
                 className="text-muted hover:text-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"

@@ -175,6 +175,8 @@ const translations: Record<Language, Record<string, string>> = {
     "ai.project.decisions": "AI: View Decisions",
     "ai.project.explain": "Explain with AI",
     "ai.resume.summary": "Summarize experience with AI",
+    "bgm.title": "Lo-fi chiilin' music",
+    "bgm.hint": "If autoplay doesn't work,\ntry pausing and playing again 🎵",
 
     // Case Study Detail
     "caseDetail.back": "Back to Projects",
@@ -308,6 +310,8 @@ const translations: Record<Language, Record<string, string>> = {
     "ai.project.decisions": "AI로 의사결정 보기",
     "ai.project.explain": "AI 설명",
     "ai.resume.summary": "AI로 경력 요약",
+    "bgm.title": "Lo-fi chiilin' music",
+    "bgm.hint": "음악 자동재생 안되면\n한번 멈췄다 재생해보세요 🎵",
 
     // Case Study Detail
     "caseDetail.back": "목록으로",
