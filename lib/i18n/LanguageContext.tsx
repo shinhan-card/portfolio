@@ -71,8 +71,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.downloadResume": "Download Resume",
 
-    // Hero — focus on WHAT I DO, not WHO I AM
-    "hero.overline": "Product Manager · Shinhan Card",
+    // Hero — detailed professional context
+    "hero.overline": "Payment Innovation Office, Pro (9-year Manager) @ Shinhan Card | Certified PSPO I | Product Manager of Payment · Fintech · Authentication Services",
     "hero.value": "Making fintech services that actually work\nunder complex constraints.",
     "hero.description":
       "Balancing regulation, security, and organizational reality\nto make technology, people, and processes move together.",
@@ -220,8 +220,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.downloadResume": "이력서",
 
-    // Hero — 무엇을 하는지에 집중
-    "hero.overline": "프로덕트 매니저 · 신한카드",
+    // Hero — 상세한 전문 컨텍스트
+    "hero.overline": "페이먼트혁신실 프로(9년차 과장) @ Shinhan Card | Certified PSPO I | Product Manager of Payment · Fintech · Authentication Services",
     "hero.value": "복잡한 제약 속에서도\n실제로 작동하는 핀테크 서비스를 기획합니다.",
     "hero.description":
       "규제·보안·조직 현실을 고려해\n기술과 사람, 프로세스가 함께 움직이게 만듭니다.",
