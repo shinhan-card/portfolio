@@ -103,25 +103,25 @@ ${message}
 ## YOUR ANSWER
 `.trim();
 
-    // Gemini API version fallback (tested working models from app.py)
+    // Gemini API version fallback (based on Google AI Studio 2026-01)
+    // Ordered from newest/fastest to stable fallbacks
     const modelVersions = [
-      "gemini-2.5-flash-preview-05-20",
-      "gemini-2.5-pro-preview-05-06",
-      "gemini-2.5-flash-lite",
-      "gemini-2.5-flash",
-      "gemini-2.0-flash",
-      "gemini-2.0-flash-exp",
-      "gemini-2.0-flash-lite",
-      "gemini-1.5-flash",
-      "gemini-1.5-flash-latest",
-      "gemini-1.5-flash-001",
-      "gemini-1.5-flash-002",
-      "gemini-1.5-pro",
-      "gemini-1.5-pro-latest",
-      "gemini-1.0-pro",
-      "gemini-pro",
-      "models/gemini-pro",
-      "models/gemini-1.5-flash",
+      "gemini-2.5-flash",               // 🚀 2.5 Flash (5 RPM free)
+      "gemini-2.5-flash-lite",          // ⚡ 2.5 Flash Lite (10 RPM free)
+      "gemini-3-flash",                 // 🆕 Gemini 3 Flash (5 RPM free)
+      "gemini-2.0-flash",               // ✅ 2.0 Flash
+      "gemini-2.0-flash-exp",           // 🧪 2.0 Flash Experimental
+      "gemini-1.5-flash",               // 💎 1.5 Flash (most stable)
+      "gemini-1.5-flash-latest",        // 📌 1.5 Flash Latest
+      "gemini-1.5-flash-002",           // 🔷 1.5 Flash v002
+      "gemini-1.5-flash-001",           // 🔷 1.5 Flash v001
+      "gemini-1.5-pro",                 // 🎯 1.5 Pro
+      "gemini-1.5-pro-latest",          // 🎯 1.5 Pro Latest
+      "gemini-1.0-pro",                 // 📦 1.0 Pro
+      "gemini-pro",                     // 📦 Legacy Pro
+      "models/gemini-2.5-flash",        // 🔄 With prefix
+      "models/gemini-1.5-flash",        // 🔄 With prefix
+      "models/gemini-pro",              // 🔄 With prefix
     ];
 
     let lastError: Error | null = null;
