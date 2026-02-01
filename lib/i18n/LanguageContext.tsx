@@ -152,7 +152,7 @@ const translations: Record<Language, Record<string, string>> = {
     "skills.item5": "Data-informed Decision Making under Constraints",
 
     // Recognition
-    "recognition.title": "Recognition",
+    "recognition.title": "🏆 Recognition",
     "recognition.subtitle": "Acknowledgment for impactful product work",
     "recognition.award1.title": "Best Squad – H1 2025",
     "recognition.award1.issuer": "Shinhan Card",
