@@ -105,10 +105,9 @@ ${message}
 
     // Gemini API version fallback (Jan 2026 free tier, highest to lowest)
     const modelVersions = [
-      "gemini-2.0-flash-exp",      // Latest experimental (free)
+      "gemini-1.5-flash",          // Standard flash (most stable)
       "gemini-1.5-flash-latest",   // Latest stable flash
-      "gemini-1.5-flash",          // Standard flash
-      "gemini-1.5-flash-8b",       // Lightweight flash
+      "gemini-1.5-pro",            // Pro version (if quota available)
     ];
 
     let lastError: Error | null = null;
@@ -135,8 +134,9 @@ ${message}
           modelUsed: modelName, // Optional: for debugging
         });
       } catch (error: any) {
-        // Log and try next model
+        // Log detailed error for debugging
         console.warn(`Model ${modelName} failed:`, error.message);
+        console.warn(`Error details:`, error);
         lastError = error;
         continue;
       }
