@@ -286,6 +286,24 @@ html {
   animation: pulse-border 2s ease-in-out infinite;
 }
 
+/* Highlight target for auto-scroll */
+@keyframes highlight-pulse {
+  0%, 100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 var(--color-accent);
+  }
+  50% {
+    background-color: var(--color-accent);
+    opacity: 0.1;
+    box-shadow: 0 0 20px 4px var(--color-accent);
+  }
+}
+
+.highlight-target {
+  animation: highlight-pulse 1.5s ease-in-out 2;
+  border-radius: 8px;
+}
+
 .dark .animate-pulse-border {
   animation: pulse-border-dark 2s ease-in-out infinite;
 }

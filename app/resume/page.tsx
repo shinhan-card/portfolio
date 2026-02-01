@@ -3,6 +3,7 @@
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { resumeData } from "@/data/resume";
 import { findRelatedProjects } from "@/data/resume-project-mapping";
+import { useScrollToHighlight } from "@/hooks/useScrollToHighlight";
 import Link from "next/link";
 import RelatedProjectLinks from "@/components/RelatedProjectLinks";
 import { 
@@ -31,6 +32,9 @@ import { getProfilePageSchema } from "@/lib/seo/structured-data";
 export default function ResumePage() {
   const { language } = useLanguage();
   const lang = language === "ko" ? "ko" : "en";
+  
+  // Auto-scroll and highlight if hash present
+  useScrollToHighlight();
 
   const texts = {
     ko: {
@@ -205,7 +209,11 @@ export default function ResumePage() {
             </div>
 
             {resumeData.experience[lang].map((exp, expIdx) => (
-              <div key={expIdx} className="mb-12">
+              <div 
+                key={expIdx} 
+                id={`exp-shinhan-${expIdx}`}
+                className="mb-12 transition-all duration-300"
+              >
                 <h3 className="text-xl font-bold text-text mb-6">{exp.company}</h3>
                 
                 <div className="space-y-8">

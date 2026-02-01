@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Network, ArrowRight } from "lucide-react";
+import { Network, ArrowRight, Maximize2 } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import type { SystemDiagram } from "@/types";
 import Card from "./ui/Card";
+import FullscreenModal from "./ui/FullscreenModal";
 
 interface SystemDiagramSectionProps {
   diagram: SystemDiagram;
@@ -12,7 +15,20 @@ interface SystemDiagramSectionProps {
 export default function SystemDiagramSection({
   diagram,
 }: SystemDiagramSectionProps) {
+  const { language } = useLanguage();
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  
   if (!diagram) return null;
+  
+  const text = language === "ko"
+    ? {
+        title: "시스템 뷰",
+        viewFullscreen: "전체화면",
+      }
+    : {
+        title: "System View",
+        viewFullscreen: "View Fullscreen",
+      };
 
   const getComponentColor = (type: string) => {
     switch (type) {
@@ -119,11 +135,20 @@ export default function SystemDiagramSection({
   return (
     <section className="mb-16">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-text mb-3 flex items-center gap-3">
-          <Network className="w-6 h-6 text-accent" />
-          System View: {diagram.title}
-        </h2>
-        <p className="text-base text-muted max-w-3xl">{diagram.description}</p>
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h2 className="text-xl sm:text-2xl font-bold text-text flex items-center gap-2 sm:gap-3">
+            <Network className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+            {text.title}: {diagram.title}
+          </h2>
+          <button
+            onClick={() => setIsFullscreen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-accent hover:text-accent-2 bg-accent/10 hover:bg-accent/20 border border-accent/30 rounded-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{text.viewFullscreen}</span>
+          </button>
+        </div>
+        <p className="text-sm sm:text-base text-muted max-w-3xl">{diagram.description}</p>
         <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-lg">
           <span className="text-xs font-mono uppercase tracking-wide text-accent">
             {diagram.type === "architecture"
@@ -164,12 +189,21 @@ export default function SystemDiagramSection({
       {/* Insight callout */}
       <div className="mt-6 p-4 bg-accent/5 border border-accent/20 rounded-lg">
         <p className="text-sm text-muted italic">
-          <strong className="text-accent">System Thinking:</strong> This
-          conceptual view demonstrates understanding of system-level interactions,
-          dependencies, and architectural decisions—not technical implementation
-          details.
+          <strong className="text-accent">{language === "ko" ? "시스템 사고" : "System Thinking"}:</strong>{" "}
+          {language === "ko" 
+            ? "개념적 관점에서 시스템 간 상호작용, 의존성, 아키텍처 의사결정을 보여줍니다—기술 구현 상세가 아닌."
+            : "This conceptual view demonstrates understanding of system-level interactions, dependencies, and architectural decisions—not technical implementation details."}
         </p>
       </div>
+
+      {/* Fullscreen Modal */}
+      <FullscreenModal
+        isOpen={isFullscreen}
+        onClose={() => setIsFullscreen(false)}
+        title={`${text.title}: ${diagram.title}`}
+      >
+        {renderSimpleLayout()}
+      </FullscreenModal>
     </section>
   );
 }

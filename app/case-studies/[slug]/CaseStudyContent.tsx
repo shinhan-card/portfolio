@@ -16,8 +16,10 @@ import ExecutiveSummary from "@/components/ui/ExecutiveSummary";
 import ShareButtons from "@/components/ui/ShareButtons";
 import DecisionLogSection from "@/components/DecisionLogSection";
 import SystemDiagramSection from "@/components/SystemDiagramSection";
+import RelatedExperience from "@/components/RelatedExperience";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import IframeEmbed from "@/components/ui/IframeEmbed";
+import { projectToExperienceMapping, experienceMappings } from "@/data/experience-project-mapping";
 import { Clock } from "lucide-react";
 import { calculateReadingTime, formatReadingTime } from "@/lib/utils/reading-time";
 
@@ -69,10 +71,11 @@ export default function CaseStudyContent({
   };
   const projectEmoji = emojiMap[caseStudy.slug] || "💼";
   
-  // Get decision logs, system diagram, and visuals
+  // Get decision logs, system diagram, visuals, and related experience
   const decisions = decisionLogs[caseStudy.slug];
   const diagram = systemDiagrams[caseStudy.slug];
   const visuals = projectVisuals[caseStudy.slug];
+  const experienceIds = projectToExperienceMapping[caseStudy.slug] || [];
 
   return (
     <main className="pt-24">
@@ -282,6 +285,14 @@ export default function CaseStudyContent({
 
             {/* Decision Logs (if available) */}
             {decisions && <DecisionLogSection decisions={decisions} />}
+
+            {/* Related Experience (if available) */}
+            {experienceIds.length > 0 && (
+              <RelatedExperience
+                experienceIds={experienceIds}
+                experiences={experienceMappings}
+              />
+            )}
 
             {/* Execution */}
             <section>

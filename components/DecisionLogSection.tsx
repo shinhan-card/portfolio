@@ -2,33 +2,50 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Check, X, AlertTriangle, Scale } from "lucide-react";
+import { ChevronDown, Check, X, AlertTriangle, Scale, Target } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import type { DecisionLog } from "@/types";
 import Card from "./ui/Card";
 
 interface DecisionLogSectionProps {
   decisions: DecisionLog[];
-  title?: string;
 }
 
 export default function DecisionLogSection({
   decisions,
-  title = "Key Decisions & Trade-offs",
 }: DecisionLogSectionProps) {
+  const { language } = useLanguage();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  
+  const text = language === "ko" 
+    ? {
+        title: "의사결정·트레이드오프",
+        subtitle: "선택한 방향, 검토한 대안, 리스크 대응—제약 하에서의 제품 판단",
+        chosen: "선택한 방향",
+        alternatives: "검토한 대안",
+        risks: "리스크와 대응",
+        whyWorked: "왜 이 선택이 통했는가",
+      }
+    : {
+        title: "Decisions & Trade-offs",
+        subtitle: "Chosen approach, alternatives, risks—product judgment under constraints",
+        chosen: "Chosen approach",
+        alternatives: "Alternatives considered",
+        risks: "Risks & mitigations",
+        whyWorked: "Why it worked",
+      };
 
   if (!decisions || decisions.length === 0) return null;
 
   return (
     <section className="mb-16">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-text mb-3 flex items-center gap-3">
-          <Scale className="w-6 h-6 text-accent" />
-          {title}
+        <h2 className="text-xl sm:text-2xl font-bold text-text mb-3 flex items-center gap-2 sm:gap-3">
+          <Scale className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+          {text.title}
         </h2>
-        <p className="text-base text-muted max-w-3xl">
-          What we chose, what we didn't, and why — demonstrating product judgment
-          under real constraints.
+        <p className="text-sm sm:text-base text-muted max-w-3xl">
+          {text.subtitle}
         </p>
       </div>
 
@@ -84,12 +101,25 @@ export default function DecisionLogSection({
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-6 pt-2 space-y-6 border-t border-border">
-                      {/* What we didn't choose */}
+                      {/* Chosen approach */}
+                      <div>
+                        <div className="flex items-center gap-2 mb-3">
+                          <Target className="w-4 h-4 text-accent" />
+                          <h4 className="text-sm font-bold text-text uppercase tracking-wide">
+                            {text.chosen}
+                          </h4>
+                        </div>
+                        <p className="text-sm text-text leading-relaxed">
+                          {decision.chosen}
+                        </p>
+                      </div>
+
+                      {/* Alternatives considered */}
                       <div>
                         <div className="flex items-center gap-2 mb-3">
                           <X className="w-4 h-4 text-red-500" />
                           <h4 className="text-sm font-bold text-text uppercase tracking-wide">
-                            What We Didn't Choose
+                            {text.alternatives}
                           </h4>
                         </div>
                         <ul className="space-y-2">
@@ -107,26 +137,13 @@ export default function DecisionLogSection({
                         </ul>
                       </div>
 
-                      {/* Reasoning */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Scale className="w-4 h-4 text-accent" />
-                          <h4 className="text-sm font-bold text-text uppercase tracking-wide">
-                            Reasoning
-                          </h4>
-                        </div>
-                        <p className="text-sm text-text leading-relaxed">
-                          {decision.reasoning}
-                        </p>
-                      </div>
-
-                      {/* Risks */}
+                      {/* Risks & mitigations */}
                       {decision.risks && decision.risks.length > 0 && (
                         <div>
                           <div className="flex items-center gap-2 mb-3">
                             <AlertTriangle className="w-4 h-4 text-yellow-500" />
                             <h4 className="text-sm font-bold text-text uppercase tracking-wide">
-                              Known Risks
+                              {text.risks}
                             </h4>
                           </div>
                           <ul className="space-y-2">
@@ -143,12 +160,12 @@ export default function DecisionLogSection({
                         </div>
                       )}
 
-                      {/* Trade-offs */}
+                      {/* Why it worked */}
                       <div className="bg-surface2 rounded-lg p-4">
                         <div className="flex items-center gap-2 mb-2">
-                          <Scale className="w-4 h-4 text-purple-500" />
+                          <Check className="w-4 h-4 text-green-500" />
                           <h4 className="text-sm font-bold text-text uppercase tracking-wide">
-                            Trade-off Analysis
+                            {text.whyWorked}
                           </h4>
                         </div>
                         <p className="text-sm text-text leading-relaxed">
