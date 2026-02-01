@@ -103,12 +103,25 @@ ${message}
 ## YOUR ANSWER
 `.trim();
 
-    // Gemini API version fallback (Jan 2026 - confirmed working models only)
-    // Use ONLY models that are verified to exist in the API
+    // Gemini API version fallback (tested working models from app.py)
     const modelVersions = [
-      "gemini-1.5-flash",               // ✅ Standard flash (most reliable, FREE)
-      "gemini-1.5-pro",                 // 💎 Pro standard (higher quality, FREE quota)
-      "gemini-pro",                     // 📦 Legacy fallback (FREE)
+      "gemini-2.5-flash-preview-05-20",
+      "gemini-2.5-pro-preview-05-06",
+      "gemini-2.5-flash-lite",
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "gemini-2.0-flash-exp",
+      "gemini-2.0-flash-lite",
+      "gemini-1.5-flash",
+      "gemini-1.5-flash-latest",
+      "gemini-1.5-flash-001",
+      "gemini-1.5-flash-002",
+      "gemini-1.5-pro",
+      "gemini-1.5-pro-latest",
+      "gemini-1.0-pro",
+      "gemini-pro",
+      "models/gemini-pro",
+      "models/gemini-1.5-flash",
     ];
 
     let lastError: Error | null = null;
