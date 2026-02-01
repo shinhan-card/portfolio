@@ -89,7 +89,7 @@ const translations: Record<Language, Record<string, string>> = {
     "scope.line3": "I continuously explore new technologies and trends, applying them to solve real problems.",
 
     // Thinking Frame
-    "thinking.title": "How I Approach Problems",
+    "thinking.title": "🧠 How I Approach Problems",
     "thinking.subtitle": "Patterns I use to navigate complexity",
     "thinking.constraints.title": "Decision-Making Under Constraints",
     "thinking.constraints.desc": "Every decision exists within regulatory limits, security requirements, and organizational reality. The goal is not perfect solutions, but workable ones that balance all constraints.",
@@ -116,7 +116,7 @@ const translations: Record<Language, Record<string, string>> = {
       "Led business strategy and KCC accreditation for card-based identity verification; coordinated with regulators, KISA, and issuers",
 
     // Projects (formerly Case Studies)
-    "caseStudies.title": "Selected Projects",
+    "caseStudies.title": "💼 Selected Projects",
     "caseStudies.subtitle":
       "Product initiatives at the intersection of infrastructure, compliance, and user experience",
     "caseStudies.core": "Core Projects",
@@ -238,7 +238,7 @@ const translations: Record<Language, Record<string, string>> = {
     "scope.line3": "새로운 기술과 트렌드를 지속적으로 탐구하며 실제 문제 해결에 접목합니다.",
 
     // Thinking Frame
-    "thinking.title": "문제를 다루는 방식",
+    "thinking.title": "🧠 문제를 다루는 방식",
     "thinking.subtitle": "복잡성을 다루는 사고 패턴",
     "thinking.constraints.title": "제약 조건 하 의사결정",
     "thinking.constraints.desc": "모든 결정은 규제 한계, 보안 요구사항, 조직 현실 안에 존재합니다. 완벽한 해법이 아니라, 모든 제약을 균형있게 다루는 실행 가능한 해법을 찾습니다.",
@@ -264,7 +264,7 @@ const translations: Record<Language, Record<string, string>> = {
       "카드본인확인서비스의 사업 전략과\nKCC 인증심사·기관 협의를 총괄하며 안정적인 서비스 확장을 이끌어옴",
 
     // Case Studies
-    "caseStudies.title": "대표 프로젝트",
+    "caseStudies.title": "💼 대표 프로젝트",
     "caseStudies.subtitle":
       "인프라·규제·고객 경험이 교차하는 영역의 제품 기획",
     "caseStudies.core": "핵심 프로젝트",
@@ -290,7 +290,7 @@ const translations: Record<Language, Record<string, string>> = {
     "case2.tag3": "컴플라이언스",
 
     // Skills
-    "skills.title": "전문성",
+    "skills.title": "⚙️ 전문성",
     "skills.subtitle": "제품·기술·규제 영역의 실무 역량",
     "skills.item1": "결제·인증 인프라 설계",
     "skills.item2": "규제 기반 제품 기획",
@@ -299,7 +299,7 @@ const translations: Record<Language, Record<string, string>> = {
     "skills.item5": "제약 조건 내 데이터 기반 의사결정",
 
     // Recognition
-    "recognition.title": "수상",
+    "recognition.title": "🏆 수상",
     "recognition.subtitle": "제품 성과 인정",
     "recognition.award1.title": "Best Squad – H1 2025 (상반기 최우수 스쿼드)",
     "recognition.award1.issuer": "신한카드",
