@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { caseStudyTranslations } from "@/lib/i18n/case-study-translations";
@@ -19,6 +20,8 @@ import SystemDiagramSection from "@/components/SystemDiagramSection";
 import RelatedExperience from "@/components/RelatedExperience";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import IframeEmbed from "@/components/ui/IframeEmbed";
+import AIInlineResponse from "@/components/ui/AIInlineResponse";
+import AIButton from "@/components/ui/AIButton";
 import { projectToExperienceMapping, experienceMappings } from "@/data/experience-project-mapping";
 import { Clock } from "lucide-react";
 import { calculateReadingTime, formatReadingTime } from "@/lib/utils/reading-time";
@@ -31,6 +34,8 @@ export default function CaseStudyContent({
   caseStudy,
 }: CaseStudyContentProps) {
   const { t, language } = useLanguage();
+  const [showAISummary, setShowAISummary] = useState(false);
+  const [showAIDecisions, setShowAIDecisions] = useState(false);
 
   const translationKeyMap: Record<string, keyof (typeof caseStudyTranslations)["en"]> = {
     "integrated-authentication-module": "auth-module",
@@ -137,47 +142,56 @@ export default function CaseStudyContent({
             meta={caseStudy.meta}
           />
 
-          {/* AI Actions */}
+          {/* AI Actions - contextual, inline */}
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                window.dispatchEvent(
-                  new CustomEvent("open-ai-panel", {
-                    detail: {
-                      presetId: "summary",
-                      projectContext: caseStudy.slug,
-                    },
-                  })
-                );
-              }}
-              className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+            <AIButton
+              onClick={() => setShowAISummary(!showAISummary)}
+              size="lg"
+              className="text-xs"
+              aria-label={t("ai.project.summary")}
             >
               <span className="opacity-80">✨</span>
               <span>{t("ai.project.summary")}</span>
-              <span className="text-[10px] opacity-60">({t("ai.label.response")})</span>
-            </button>
+            </AIButton>
             {decisions && (
-              <button
-                type="button"
-                onClick={() => {
-                  window.dispatchEvent(
-                    new CustomEvent("open-ai-panel", {
-                      detail: {
-                        customPrompt: language === "ko"
-                          ? `${getProjectTitle(caseStudy.slug, language)} 프로젝트의 핵심 의사결정과 트레이드오프를 요약해주세요.`
-                          : `Summarize key decisions and trade-offs for ${getProjectTitle(caseStudy.slug, language)}.`,
-                      },
-                    })
-                  );
-                }}
-                className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+              <AIButton
+                onClick={() => setShowAIDecisions(!showAIDecisions)}
+                size="lg"
+                className="text-xs"
+                aria-label={t("ai.project.decisions")}
               >
                 <span className="opacity-80">✨</span>
                 <span>{t("ai.project.decisions")}</span>
-              </button>
+              </AIButton>
             )}
           </div>
+
+          {/* Inline AI responses */}
+          {showAISummary && (
+            <AIInlineResponse
+              prompt={
+                language === "ko"
+                  ? `${getProjectTitle(caseStudy.slug, language)} 프로젝트를 30초 안에 요약해주세요.`
+                  : `Summarize the ${getProjectTitle(caseStudy.slug, language)} project in 30 seconds.`
+              }
+              context={caseStudy.slug}
+              layout="brief"
+              onClose={() => setShowAISummary(false)}
+            />
+          )}
+
+          {showAIDecisions && (
+            <AIInlineResponse
+              prompt={
+                language === "ko"
+                  ? `${getProjectTitle(caseStudy.slug, language)} 프로젝트의 핵심 의사결정과 트레이드오프를 요약해주세요.`
+                  : `Summarize key decisions and trade-offs for ${getProjectTitle(caseStudy.slug, language)}.`
+              }
+              context={caseStudy.slug}
+              layout="brief"
+              onClose={() => setShowAIDecisions(false)}
+            />
+          )}
 
           <div className="flex flex-wrap gap-8 text-sm mt-10">
             <div>

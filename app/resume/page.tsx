@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { resumeData } from "@/data/resume";
 import { findRelatedProjects } from "@/data/resume-project-mapping";
 import { useScrollToHighlight } from "@/hooks/useScrollToHighlight";
 import Link from "next/link";
 import RelatedProjectLinks from "@/components/RelatedProjectLinks";
+import AIInlineResponse from "@/components/ui/AIInlineResponse";
+import AIButton from "@/components/ui/AIButton";
 import { 
   Briefcase, 
   GraduationCap, 
@@ -32,6 +35,7 @@ import { getProfilePageSchema } from "@/lib/seo/structured-data";
 export default function ResumePage() {
   const { language } = useLanguage();
   const lang = language === "ko" ? "ko" : "en";
+  const [showAICareerSummary, setShowAICareerSummary] = useState(false);
   
   // Auto-scroll and highlight if hash present
   useScrollToHighlight();
@@ -99,25 +103,29 @@ export default function ResumePage() {
               </svg>
               {t.back}
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                window.dispatchEvent(
-                  new CustomEvent("open-ai-panel", {
-                    detail: {
-                      customPrompt: lang === "ko"
-                        ? "이 사람의 경력과 전문성을 간단히 요약해주세요."
-                        : "Briefly summarize this person's experience and expertise.",
-                    },
-                  })
-                );
-              }}
-              className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+            <AIButton
+              onClick={() => setShowAICareerSummary(!showAICareerSummary)}
+              size="lg"
+              className="text-xs"
+              aria-label={lang === "ko" ? "AI로 경력 요약" : "Summarize experience with AI"}
             >
               <span className="opacity-80">✨</span>
               <span>{lang === "ko" ? "AI로 경력 요약" : "Summarize experience with AI"}</span>
-            </button>
+            </AIButton>
           </div>
+
+          {/* Inline AI career summary */}
+          {showAICareerSummary && (
+            <AIInlineResponse
+              prompt={
+                lang === "ko"
+                  ? "이 사람의 경력과 전문성을 간단히 요약해주세요."
+                  : "Briefly summarize this person's experience and expertise."
+              }
+              layout="executive"
+              onClose={() => setShowAICareerSummary(false)}
+            />
+          )}
 
           {/* Header */}
           <div className="mb-16 relative">

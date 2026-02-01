@@ -7,6 +7,8 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import type { SystemDiagram } from "@/types";
 import Card from "./ui/Card";
 import FullscreenModal from "./ui/FullscreenModal";
+import AIInlineResponse from "./ui/AIInlineResponse";
+import AIButton from "./ui/AIButton";
 
 interface SystemDiagramSectionProps {
   diagram: SystemDiagram;
@@ -15,8 +17,9 @@ interface SystemDiagramSectionProps {
 export default function SystemDiagramSection({
   diagram,
 }: SystemDiagramSectionProps) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showAIExplain, setShowAIExplain] = useState(false);
   
   if (!diagram) return null;
   
@@ -159,25 +162,30 @@ export default function SystemDiagramSection({
                 : "Sequence"}
             </span>
           </div>
-          <button
-            type="button"
-            onClick={() => {
-              window.dispatchEvent(
-                new CustomEvent("open-ai-panel", {
-                  detail: {
-                    customPrompt: language === "ko"
-                      ? `${diagram.title} 시스템 다이어그램을 간단히 설명해주세요.`
-                      : `Briefly explain the ${diagram.title} system diagram.`,
-                  },
-                })
-              );
-            }}
-            className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+          <AIButton
+            onClick={() => setShowAIExplain(!showAIExplain)}
+            size="lg"
+            className="text-xs"
+            aria-label={language === "ko" ? "AI 설명" : "Explain with AI"}
           >
             <span className="opacity-80">✨</span>
             <span>{language === "ko" ? "AI 설명" : "Explain with AI"}</span>
-          </button>
+          </AIButton>
         </div>
+
+        {/* Inline AI explanation */}
+        {showAIExplain && (
+          <AIInlineResponse
+            prompt={
+              language === "ko"
+                ? `${diagram.title} 시스템 다이어그램을 간단히 설명해주세요.`
+                : `Briefly explain the ${diagram.title} system diagram.`
+            }
+            context={diagram.title}
+            layout="narration"
+            onClose={() => setShowAIExplain(false)}
+          />
+        )}
       </div>
 
       {renderSimpleLayout()}

@@ -216,22 +216,17 @@ export default function AIPanel() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed right-0 top-0 bottom-0 w-full sm:w-[480px] bg-surface border-l border-border shadow-2xl z-[91] flex flex-col"
           >
-            {/* Header */}
+            {/* Header - refined, quieter */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-              <h2 className="text-lg font-bold text-text flex items-center gap-2">
-                <span 
-                  className="inline-flex items-center justify-center w-7 h-7 rounded-md"
-                  style={{
-                    border: '1.5px solid transparent',
-                    backgroundImage: 'linear-gradient(var(--color-surface), var(--color-surface)), linear-gradient(135deg, #a855f7, #8b5cf6, #6366f1)',
-                    backgroundOrigin: 'border-box',
-                    backgroundClip: 'padding-box, border-box',
-                  }}
-                >
+              <div>
+                <h2 className="text-base font-medium text-text flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-accent" />
-                </span>
-                {text.title}
-              </h2>
+                  AI Assist
+                </h2>
+                <p className="text-xs text-muted2 mt-1">
+                  {t("ai.disclaimer.full").split(".")[0]}.
+                </p>
+              </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="w-8 h-8 rounded-md hover:bg-surface2 flex items-center justify-center text-muted hover:text-text transition-colors"
