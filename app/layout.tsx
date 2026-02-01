@@ -14,6 +14,7 @@ import SkipToContent from "@/components/ui/SkipToContent";
 import KeyboardShortcuts from "@/components/ui/KeyboardShortcuts";
 import KeyboardHint from "@/components/ui/KeyboardHint";
 import RouteChangeSound from "@/components/sound/RouteChangeSound";
+import AIPanel from "@/components/AIPanel";
 import { Analytics } from "@vercel/analytics/react";
 
 // Premium font configuration
@@ -127,6 +128,7 @@ export default function RootLayout({
                 <AmbientPlayer />
                 <BackToTop />
                 <KeyboardHint />
+                <AIPanel />
                 <Analytics />
               </SoundProvider>
             </AmbientProvider>
