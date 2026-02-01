@@ -135,13 +135,26 @@ export default function ResumePage() {
               <div className="absolute top-0 right-0 text-8xl">💼</div>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-text mb-2 flex items-center gap-2 sm:gap-3 relative">
-              <span className="text-3xl sm:text-4xl md:text-5xl">👨‍💼</span>
-              윤태웅 (Eric Yoon)
-            </h1>
-            <p className="text-2xl font-semibold text-muted mb-4 relative">
-              {resumeData.currentRole[lang]}
-            </p>
+            <div className="flex items-start gap-4 sm:gap-6 mb-6">
+              {/* Shinhan Card Logo */}
+              <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full shadow-lg flex items-center justify-center overflow-hidden ring-2 ring-border">
+                <img 
+                  src="/images/shinhan-card-logo.png" 
+                  alt="Shinhan Card" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              <div className="flex-1">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text mb-2 flex items-center gap-2 sm:gap-3">
+                  <span className="text-3xl sm:text-4xl md:text-5xl">👨‍💼</span>
+                  윤태웅 (Eric Yoon)
+                </h1>
+                <p className="text-xl sm:text-2xl font-semibold text-muted mb-3">
+                  {resumeData.currentRole[lang]}
+                </p>
+              </div>
+            </div>
             <div className="flex items-center gap-2 text-muted2 mb-6">
               <MapPin className="w-4 h-4" />
               <span>{resumeData.location[lang]}</span>
