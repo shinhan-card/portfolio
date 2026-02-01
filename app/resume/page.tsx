@@ -152,25 +152,26 @@ export default function ResumePage() {
               <p className="text-xl sm:text-2xl font-semibold text-muted mb-4">
                 {resumeData.currentRole[lang]}
               </p>
-            <div className="flex items-center gap-2 text-muted2 mb-6">
-              <MapPin className="w-4 h-4" />
-              <span>{resumeData.location[lang]}</span>
-            </div>
+              <div className="flex items-center gap-2 text-muted2 mb-6">
+                <MapPin className="w-4 h-4" />
+                <span>{resumeData.location[lang]}</span>
+              </div>
 
-            {/* Action buttons */}
-            <div className="flex flex-wrap gap-3">
-              <Button
-                href={resumeData.contact.linkedin}
-                variant="secondary"
-                size="sm"
-              >
-                <Linkedin className="w-4 h-4 mr-2" />
-                {t.viewLinkedIn}
-              </Button>
-              <Button href="/resume.pdf" variant="secondary" size="sm" download>
-                <Download className="w-4 h-4 mr-2" />
-                {t.downloadResume}
-              </Button>
+              {/* Action buttons */}
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  href={resumeData.contact.linkedin}
+                  variant="secondary"
+                  size="sm"
+                >
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  {t.viewLinkedIn}
+                </Button>
+                <Button href="/resume.pdf" variant="secondary" size="sm" download>
+                  <Download className="w-4 h-4 mr-2" />
+                  {t.downloadResume}
+                </Button>
+              </div>
             </div>
           </div>
 
