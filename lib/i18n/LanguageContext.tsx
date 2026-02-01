@@ -82,11 +82,11 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.ai": "Explore this portfolio with AI",
     "hero.ai.helper": "AI summarizes the essence of this portfolio.",
 
-    // Problem Space / Scope (concrete, not philosophical)
-    "scope.title": "Problem Space",
-    "scope.line1": "Authentication infrastructure across high-traffic payment services",
-    "scope.line2": "Regulatory compliance products (KCC accreditation, audits, institutional coordination)",
-    "scope.line3": "Payment flows and Open Banking integrations where regulation, UX, and operations intersect",
+    // Working Style (condensed from How I Work)
+    "scope.title": "How I Work",
+    "scope.line1": "Decisions through thorough discussion and persuasion with teammates—building together, not alone",
+    "scope.line2": "Finding viable paths within given constraints rather than listing obstacles",
+    "scope.line3": "Continuously exploring new technologies and trends, applying them to solve real problems",
 
     // Thinking Frame
     "thinking.title": "How I Approach Problems",
@@ -231,11 +231,11 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.ai": "AI로 이 포트폴리오 둘러보기",
     "hero.ai.helper": "AI가 이 포트폴리오의 핵심을 요약해드립니다.",
 
-    // 문제 영역 / 범위 (구체적)
-    "scope.title": "담당 영역",
-    "scope.line1": "대규모 트래픽 결제 서비스의 인증 인프라",
-    "scope.line2": "규제 대응 제품 (KCC 인증심사, 감사, 기관 협의)",
-    "scope.line3": "규제·UX·운영이 교차하는 결제 플로우 및 오픈뱅킹 연동",
+    // Working Style (축약)
+    "scope.title": "일하는 방식",
+    "scope.line1": "팀원과의 충분한 토의와 설득을 거쳐 결정하며, 혼자가 아닌 함께 만들어갑니다",
+    "scope.line2": "안 되는 이유보다 주어진 조건에서 가능한 방법을 찾는 유연한 문제 해결",
+    "scope.line3": "새로운 기술과 트렌드를 지속적으로 탐구하며 실제 문제 해결에 접목",
 
     // Thinking Frame
     "thinking.title": "문제를 다루는 방식",
