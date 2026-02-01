@@ -171,8 +171,8 @@ export default function CaseStudyContent({
             <AIInlineResponse
               prompt={
                 language === "ko"
-                  ? `${getProjectTitle(caseStudy.slug, language)} 프로젝트를 30초 안에 요약해주세요.`
-                  : `Summarize the ${getProjectTitle(caseStudy.slug, language)} project in 30 seconds.`
+                  ? `${getProjectTitle(caseStudy.slug, language)} 프로젝트를 전체적으로 요약해주세요. 배경(Context), 목표(Goal), 핵심 의사결정(Key Decisions), 추진 과정(Execution), 성과(Results), 인사이트(Learnings)를 모두 포함해서 간결하게 요약해주세요.`
+                  : `Provide a comprehensive summary of the ${getProjectTitle(caseStudy.slug, language)} project. Include Context, Goal, Key Decisions, Execution, Results, and Key Learnings in a concise format.`
               }
               context={caseStudy.slug}
               layout="brief"
