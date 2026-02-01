@@ -84,6 +84,24 @@ export async function POST(request: NextRequest) {
     const portfolioContext = buildPortfolioContext(lang);
     const systemPrompt = getSystemPrompt(lang);
 
+    // Detect response type and apply template
+    const messageL = message.toLowerCase();
+    let templateInstructions = "";
+
+    if (messageL.includes("요약") || messageL.includes("summary")) {
+      templateInstructions = lang === "ko"
+        ? "\n## 응답 형식\n- 3-4개 핵심 포인트만 불릿으로\n- 의사결정 디테일은 제외\n- 간결하게 30초 분량"
+        : "\n## RESPONSE FORMAT\n- 3-4 key bullet points only\n- No decision details\n- Concise, 30-second read";
+    } else if (messageL.includes("의사결정") || messageL.includes("decision") || messageL.includes("trade-off")) {
+      templateInstructions = lang === "ko"
+        ? "\n## 응답 형식 (고정)\n1. **선택한 접근**: [무엇을 선택했는지]\n2. **검토한 대안들**: [고려했던 다른 방법들]\n3. **리스크와 대응**: [주요 리스크와 완화 방법]\n4. **결정이 유효했던 이유**: [왜 이 방법이 작동했는지]"
+        : "\n## RESPONSE FORMAT (FIXED)\n1. **Chosen Approach**: [What was selected]\n2. **Alternatives Considered**: [Other options evaluated]\n3. **Risks & Mitigations**: [Key risks and how addressed]\n4. **Why This Worked**: [Validation of the decision]";
+    } else if (messageL.includes("시스템") || messageL.includes("다이어그램") || messageL.includes("system") || messageL.includes("diagram") || messageL.includes("아키텍처") || messageL.includes("architecture")) {
+      templateInstructions = lang === "ko"
+        ? "\n## 응답 형식 (고정)\n1. **시스템 개요**: [이 시스템이 무엇인지]\n2. **구성 요소 상호작용**: [컴포넌트들이 어떻게 연동되는지]\n3. **운영 고려사항**: [실제 운영 시 중요한 점]"
+        : "\n## RESPONSE FORMAT (FIXED)\n1. **System Overview**: [What this system is]\n2. **Component Interactions**: [How components work together]\n3. **Operational Considerations**: [What matters in production]";
+    }
+
     const fullPrompt = `
 ${systemPrompt}
 
@@ -92,7 +110,9 @@ ${systemPrompt}
 - Answer in ${lang === "ko" ? "Korean" : "English"}.
 - Be concise unless user asks for detail.
 - Use bullet points when listing.
-- Do not invent facts.
+- DO NOT invent facts or numbers.
+- DO NOT provide percentages, satisfaction scores, or quantitative claims unless explicitly in context.
+${templateInstructions}
 
 ## CONTEXT
 ${portfolioContext}

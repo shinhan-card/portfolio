@@ -10,7 +10,7 @@ export const caseStudies: CaseStudy[] = [
     featured: true,
     summaryBullets: [
       "Unified fragmented authentication across multiple services into a single modular platform",
-      "Adopted by multiple high-traffic services with 85%+ satisfaction from engineering teams",
+      "Adopted by multiple high-traffic services with positive feedback from engineering teams",
       "Reduced duplicated implementation work, freeing engineering capacity for business features",
       "Established scalable governance model for adding future authentication methods",
     ],
@@ -173,7 +173,7 @@ export const caseStudies: CaseStudy[] = [
     },
     context: "Shinhan Card's Open Banking system launched in 2021 had issues due to rushed implementation—malfunctioning screens and features developed without user perspective. As newly assigned Open Banking PM in 2022, needed to stabilize and enhance the service. Account services differed fundamentally from card: transfers are irreversible and real-time (unlike card payments with cancellation), making them more vulnerable to financial fraud. External dependencies (bank systems, KFTC infrastructure) made issue diagnosis difficult.",
     goal: "Enhance Open Banking account management and transfer services to production-grade quality. Add authentication methods meeting KFTC standards. Strengthen security against voice phishing while maintaining UX. Renew transfer interface for better usability. Serve as Shinhan Card's Open Banking representative with KFTC and external partners.",
-    role: "Product Manager leading Open Banking enhancement on 3-person team (customer service support, data analysis, enhancement lead). Led service enhancement and UX renewal (85% contribution). Served as Shinhan Card's Open Banking representative for external communications with KFTC and partners.",
+    role: "Product Manager leading Open Banking enhancement on 3-person team (customer service support, data analysis, enhancement lead). Led service enhancement and UX renewal as primary contributor. Served as Shinhan Card's Open Banking representative for external communications with KFTC and partners.",
     keyDecisions: [
       "Prioritized fixing malfunctions over new features — addressed rushed 2021 launch issues before adding capabilities",
       "Added KFTC-compliant authentication methods systematically — card password, 1-won verification, ARS authentication per financial regulator requirements",
@@ -245,7 +245,7 @@ export const caseStudies: CaseStudy[] = [
     },
     context: "Shinhan Card's payment methods were limited to credit/debit/prepaid cards and local currency. Open Banking regulations enabled opportunity to allow customers to pay with registered bank accounts at existing card merchant network. However, integrating accounts into card-centric approval system required new product structure, extensive legal reviews (merchant/user/KFTC Open Banking terms), and new approval and accounting system designs.",
     goal: "Launch account payment service that allows customers to use registered bank accounts for online and offline card merchant payments without card issuance. Enable simple in-app registration and payment without promotions, relying on convenience to drive adoption. Complete extensive compliance reviews and build new product structure in approval and accounting systems.",
-    role: "Product Manager on 2-person planning team (70% contribution). Defined user scenarios by action, designed screens, and created operational manuals. Coordinated across app, Open Banking, product, issuance, and deposit systems—many teams not accustomed to working together.",
+    role: "Product Manager on 2-person planning team as lead contributor. Defined user scenarios by action, designed screens, and created operational manuals. Coordinated across app, Open Banking, product, issuance, and deposit systems—many teams not accustomed to working together.",
     keyDecisions: [
       "Integrated accounts into existing card payment network — leveraged proven infrastructure rather than building separate payment rail",
       "Launched without promotions or incentives — bet on convenience value (no card issuance needed) to drive organic adoption",

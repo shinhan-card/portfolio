@@ -346,28 +346,32 @@ export const resumeData: Resume = {
   },
   certifications: [
     {
-      title: "PSPO I",
+      title: "Professional Scrum Product Owner I (PSPO I)",
       issuer: "Scrum.org",
+      date: "2025-11",
     },
     {
-      title: "OPIC AL",
+      title: "OPIC AL (Advanced Low)",
+      issuer: "ACTFL",
+      date: "2017-08",
     },
     {
       title: "Airborne Basic Parachute Training",
-      issuer: "특전사 공수기본",
+      issuer: "ROK Army Special Warfare Command",
+      date: "2014-06",
     },
   ],
   patents: {
     ko: [
       {
         title: "사용자 인증 우회 차단 방법 및 장치",
-        description: "모바일 앱 가입 과정에서 인증 우회를 차단하는 방법 및 장치",
+        description: "출원일: 2024-04-23 | 모바일 앱 가입 과정에서 인증 우회를 차단하는 방법 및 장치",
       },
     ],
     en: [
       {
         title: "Method and Device for Blocking User Authentication Bypass",
-        description: "Blocks authentication bypass during mobile app sign-up",
+        description: "Application date: 2024-04-23 | Blocks authentication bypass during mobile app sign-up",
       },
     ],
   },
