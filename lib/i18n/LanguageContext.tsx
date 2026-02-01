@@ -189,7 +189,7 @@ const translations: Record<Language, Record<string, string>> = {
   ko: {
     // Navigation
     "nav.home": "홈",
-    "nav.caseStudies": "케이스 스터디",
+    "nav.caseStudies": "프로젝트",
     "nav.skills": "전문성",
     "nav.resume": "이력",
     "nav.about": "소개",
