@@ -103,24 +103,51 @@ ${message}
 ## YOUR ANSWER
 `.trim();
 
-    // Call Gemini API
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      generationConfig: {
-        temperature: 0.7,
-        maxOutputTokens: 1000,
-      },
-    });
+    // Gemini API version fallback (Jan 2026 free tier, highest to lowest)
+    const modelVersions = [
+      "gemini-2.0-flash-exp",      // Latest experimental (free)
+      "gemini-1.5-flash-latest",   // Latest stable flash
+      "gemini-1.5-flash",          // Standard flash
+      "gemini-1.5-flash-8b",       // Lightweight flash
+    ];
 
-    const result = await model.generateContent(fullPrompt);
-    const response = result.response;
-    const text = response.text();
+    let lastError: Error | null = null;
 
-    // Return response (no logging of user prompts for privacy)
-    return NextResponse.json({
-      response: text,
-      remaining: rateLimit.remaining,
-    });
+    // Try each model version until one succeeds
+    for (const modelName of modelVersions) {
+      try {
+        const model = genAI.getGenerativeModel({
+          model: modelName,
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 1000,
+          },
+        });
+
+        const result = await model.generateContent(fullPrompt);
+        const response = result.response;
+        const text = response.text();
+
+        // Success - return response
+        return NextResponse.json({
+          response: text,
+          remaining: rateLimit.remaining,
+          modelUsed: modelName, // Optional: for debugging
+        });
+      } catch (error: any) {
+        // Log and try next model
+        console.warn(`Model ${modelName} failed:`, error.message);
+        lastError = error;
+        continue;
+      }
+    }
+
+    // All models failed
+    console.error("All Gemini models failed. Last error:", lastError?.message);
+    return NextResponse.json(
+      { error: "Failed to generate response" },
+      { status: 500 }
+    );
   } catch (error: any) {
     // Generic error (don't leak details)
     console.error("AI API error:", error.message);

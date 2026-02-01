@@ -110,8 +110,11 @@ export default function Footer() {
 
         <div className="hairline mb-8" />
 
-        <div className="text-center text-sm text-muted2">
-          <p className="flex items-center justify-center gap-2">
+        <div className="text-center text-sm text-muted2 space-y-3">
+          <p className="max-w-xl mx-auto text-xs leading-relaxed">
+            {t("footer.aiNote")}
+          </p>
+          <p className="flex items-center justify-center gap-2 flex-wrap">
             <span>©</span>
             <span>{currentYear}</span>
             <span>•</span>

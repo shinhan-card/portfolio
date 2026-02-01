@@ -85,6 +85,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.primary": "View Resume",
     "hero.cta.secondary": "View Projects",
     "hero.cta.all": "View All Projects",
+    "hero.cta.ai": "Explore this portfolio with AI",
 
     // Impact Metrics
     "impact.title": "Impact Summary",
@@ -166,6 +167,9 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.quickLinks": "Quick Links",
     "footer.connect": "Connect",
     "footer.copyright": "All rights reserved.",
+    "footer.aiNote": "AI features on this site use only publicly available portfolio content and are designed not to infer or fabricate information.",
+    "ai.label.response": "AI-assisted (Gemini)",
+    "ai.disclaimer.full": "Responses are generated using only the information published in this portfolio. The AI is designed not to infer or fabricate information.",
 
     // Case Study Detail
     "caseDetail.back": "Back to Projects",
@@ -211,6 +215,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.primary": "이력 보기",
     "hero.cta.secondary": "주요 프로젝트",
     "hero.cta.all": "전체 프로젝트",
+    "hero.cta.ai": "AI로 이 포트폴리오 둘러보기",
 
     // Impact Summary — 3 cards (승인 한국어)
     "impact.title": "주요 성과",
@@ -290,6 +295,9 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.quickLinks": "바로가기",
     "footer.connect": "연락",
     "footer.copyright": "All rights reserved.",
+    "footer.aiNote": "이 사이트의 AI 기능은 공개된 포트폴리오 정보만을 기반으로 작동하며, 사실을 추정하거나 존재하지 않는 정보를 생성하지 않도록 설계되었습니다.",
+    "ai.label.response": "AI(Gemini) 기반 요약",
+    "ai.disclaimer.full": "이 사이트의 AI 기능은 공개된 포트폴리오 정보만을 기반으로 작동하며, 사실을 추정하거나 존재하지 않는 정보를 생성하지 않도록 설계되었습니다.",
 
     // Case Study Detail
     "caseDetail.back": "목록으로",

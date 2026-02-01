@@ -12,7 +12,7 @@ type Mode = "recruiter" | "hiringManager" | "engineer";
 const MAX_INPUT_LENGTH = 1500;
 
 export default function AIPanel() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<Mode>("recruiter");
   const [input, setInput] = useState("");
@@ -21,12 +21,30 @@ export default function AIPanel() {
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
 
-  // Listen for open event
+  const [pendingPresetId, setPendingPresetId] = React.useState<string | null>(null);
+
+  // Listen for open event (optionally with presetId to auto-run e.g. "30s summary")
   React.useEffect(() => {
-    const handleOpen = () => setIsOpen(true);
+    const handleOpen = (e: Event) => {
+      setIsOpen(true);
+      const detail = (e as CustomEvent<{ presetId?: string }>)?.detail;
+      if (detail?.presetId) setPendingPresetId(detail.presetId);
+    };
     window.addEventListener("open-ai-panel", handleOpen);
     return () => window.removeEventListener("open-ai-panel", handleOpen);
   }, []);
+
+  // When panel opens with pendingPresetId, run that preset once
+  React.useEffect(() => {
+    if (!isOpen || !pendingPresetId) return;
+    const preset = presets.recruiter.find((p) => p.id === pendingPresetId);
+    if (preset) {
+      setPendingPresetId(null);
+      handlePreset(preset.prompt);
+    } else {
+      setPendingPresetId(null);
+    }
+  }, [isOpen, pendingPresetId]);
 
   const presets = {
     recruiter:
@@ -192,7 +210,17 @@ export default function AIPanel() {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
               <h2 className="text-lg font-bold text-text flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-accent" />
+                <span 
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-md"
+                  style={{
+                    border: '1.5px solid transparent',
+                    backgroundImage: 'linear-gradient(var(--color-surface), var(--color-surface)), linear-gradient(135deg, #a855f7, #8b5cf6, #6366f1)',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'padding-box, border-box',
+                  }}
+                >
+                  <Sparkles className="w-4 h-4 text-accent" />
+                </span>
                 {text.title}
               </h2>
               <button
@@ -278,10 +306,15 @@ export default function AIPanel() {
               {/* Response */}
               {(response || error || isLoading) && (
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
                     <p className="text-xs font-mono uppercase tracking-wide text-muted2">
                       Response
                     </p>
+                    {response && !isLoading && (
+                      <span className="text-[11px] text-muted2 font-normal normal-case" aria-hidden>
+                        {t("ai.label.response")}
+                      </span>
+                    )}
                     {response && !isLoading && (
                       <button
                         onClick={handleCopy}
@@ -320,11 +353,11 @@ export default function AIPanel() {
                 </div>
               )}
 
-              {/* Disclaimer */}
-              <div className="text-xs text-muted2 italic border-t border-border pt-4">
+              {/* Transparency note */}
+              <div className="text-xs text-muted2 border-t border-border pt-4">
                 <p className="flex items-start gap-1.5">
-                  <Sparkles className="w-3 h-3 flex-shrink-0 mt-0.5 text-accent" />
-                  <span>{text.disclaimer}</span>
+                  <Sparkles className="w-3 h-3 flex-shrink-0 mt-0.5 text-accent opacity-80" />
+                  <span>{t("ai.disclaimer.full")}</span>
                 </p>
               </div>
             </div>

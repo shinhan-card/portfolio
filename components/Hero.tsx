@@ -121,6 +121,27 @@ export default function Hero() {
                 {t("hero.cta.all")}
               </Button>
             </div>
+            {/* AI entry — subtle, integrated */}
+            <p className="mt-6 text-sm text-muted2">
+              <button
+                type="button"
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent("open-ai-panel", { detail: { presetId: "summary" } })
+                  );
+                }}
+                className="relative inline-flex items-center gap-1.5 text-muted2 hover:text-accent focus:outline-none focus-visible:underline rounded-sm transition-colors px-2 py-1"
+                style={{
+                  border: '1px solid transparent',
+                  backgroundImage: 'linear-gradient(var(--color-bg), var(--color-bg)), linear-gradient(135deg, #a855f7, #8b5cf6, #6366f1)',
+                  backgroundOrigin: 'border-box',
+                  backgroundClip: 'padding-box, border-box',
+                }}
+              >
+                <span className="opacity-80">✨</span>
+                {t("hero.cta.ai")}
+              </button>
+            </p>
           </div>
         </div>
       </div>
