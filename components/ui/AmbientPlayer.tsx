@@ -12,8 +12,23 @@ export default function AmbientPlayer() {
   const [volume, setVolume] = useState(0.3);
   const [isMuted, setIsMuted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [showHint, setShowHint] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
   const hasUserToggled = useRef(false);
+
+  // Hide hint after first interaction or after 10 seconds
+  useEffect(() => {
+    const hasSeenBGM = localStorage.getItem("bgm-hint-seen");
+    if (hasSeenBGM) {
+      setShowHint(false);
+    } else {
+      const timer = setTimeout(() => {
+        setShowHint(false);
+        localStorage.setItem("bgm-hint-seen", "true");
+      }, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Load preferences from localStorage
   useEffect(() => {
@@ -77,6 +92,8 @@ export default function AmbientPlayer() {
 
   const togglePlay = () => {
     hasUserToggled.current = true;
+    setShowHint(false);
+    localStorage.setItem("bgm-hint-seen", "true");
     togglePlayContext();
   };
 
@@ -108,26 +125,36 @@ export default function AmbientPlayer() {
         {!isVisible ? (
           <>
             <button
-              onClick={() => setIsVisible(true)}
-              className="w-12 h-12 rounded-full bg-surface border border-border hover:bg-surface2 transition-all duration-200 flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 relative"
+              onClick={() => {
+                setIsVisible(true);
+                setShowHint(false);
+                localStorage.setItem("bgm-hint-seen", "true");
+              }}
+              className={`w-12 h-12 rounded-full bg-surface border-2 hover:bg-surface2 transition-all duration-200 flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 relative ${
+                showHint ? "border-accent/50 animate-pulse" : "border-border"
+              }`}
               aria-label="Open ambient player"
             >
               <Volume2 className="w-5 h-5 text-muted" strokeWidth={2} />
               {isPlaying && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse border-2 border-bg" />
               )}
             </button>
             
-            {/* Hint tooltip - shows for first-time visitors */}
-            <div className="absolute bottom-full left-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <div className="bg-surface border border-accent/30 rounded-lg shadow-xl px-3 py-2 whitespace-nowrap">
-                <p className="text-xs text-text font-medium flex items-center gap-1.5">
-                  <span className="text-base">🎵</span>
-                  <span>Background Music</span>
-                </p>
+            {/* Hint tooltip - always visible on hover, persistent for first-timers */}
+            {(showHint || isVisible === false) && (
+              <div className={`absolute bottom-full left-0 mb-2 transition-opacity pointer-events-none ${
+                showHint ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              }`}>
+                <div className="bg-surface border-2 border-accent/40 rounded-lg shadow-xl px-3 py-2 whitespace-nowrap">
+                  <p className="text-xs text-text font-medium flex items-center gap-1.5">
+                    <span className="text-base">🎵</span>
+                    <span>{showHint ? "Click for Music" : "Background Music"}</span>
+                  </p>
+                </div>
+                <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-[6px] border-l-transparent border-r-transparent border-t-surface" />
               </div>
-              <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-surface" />
-            </div>
+            )}
           </>
         ) : (
           <div className="bg-surface border border-border rounded-xl shadow-lg p-4 w-64 space-y-3">
