@@ -358,10 +358,13 @@ export default function AIPanel() {
               )}
 
               {/* Transparency note */}
-              <div className="text-xs text-muted2 border-t border-border pt-4">
+              <div className="text-xs text-muted2 border-t border-border pt-4 space-y-2">
                 <p className="flex items-start gap-1.5">
                   <Sparkles className="w-3 h-3 flex-shrink-0 mt-0.5 text-accent opacity-80" />
                   <span>{t("ai.disclaimer.full")}</span>
+                </p>
+                <p className="text-center text-[11px] text-muted2 italic pt-2">
+                  Powered by Google Gemini
                 </p>
               </div>
             </div>
