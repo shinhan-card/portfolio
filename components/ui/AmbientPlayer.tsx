@@ -36,24 +36,31 @@ export default function AmbientPlayer() {
     }
   }, [volume, isMuted]);
 
-  // Sync play/pause with context (do not autoplay on mount when state restored from localStorage)
+  // Sync play/pause with context - allow auto-resume from localStorage
   useEffect(() => {
     if (!audioRef.current) return;
 
     if (isPlaying) {
-      if (!hasUserToggled.current) return;
       const targetVol = isMuted ? 0 : volume;
       audioRef.current.volume = 0;
-      audioRef.current.play().catch(() => {});
-      const fadeIn = setInterval(() => {
-        if (audioRef.current && audioRef.current.volume < targetVol - 0.05) {
-          audioRef.current.volume = Math.min(targetVol, audioRef.current.volume + 0.05);
-        } else {
-          clearInterval(fadeIn);
-          if (audioRef.current) audioRef.current.volume = targetVol;
-        }
-      }, 50);
-      return () => clearInterval(fadeIn);
+      
+      // Try to play (will succeed if user previously interacted or on auto-resume)
+      audioRef.current.play().then(() => {
+        hasUserToggled.current = true; // Mark as user-initiated
+        const fadeIn = setInterval(() => {
+          if (audioRef.current && audioRef.current.volume < targetVol - 0.05) {
+            audioRef.current.volume = Math.min(targetVol, audioRef.current.volume + 0.05);
+          } else {
+            clearInterval(fadeIn);
+            if (audioRef.current) audioRef.current.volume = targetVol;
+          }
+        }, 50);
+      }).catch(() => {
+        // Auto-play blocked - user needs to click
+        console.log("Auto-play blocked - user interaction required");
+      });
+      
+      return;
     } else {
       const fadeOut = setInterval(() => {
         if (audioRef.current && audioRef.current.volume > 0.05) {
@@ -66,7 +73,7 @@ export default function AmbientPlayer() {
       }, 50);
       return () => clearInterval(fadeOut);
     }
-  }, [isPlaying]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isPlaying, volume, isMuted]);
 
   const togglePlay = () => {
     hasUserToggled.current = true;
@@ -97,15 +104,31 @@ export default function AmbientPlayer() {
         <source src="/audio/bgm.wma" type="audio/x-ms-wma" />
       </audio>
 
-      <div className="fixed bottom-6 left-6 z-40">
+      <div className="fixed bottom-6 left-6 z-40 group">
         {!isVisible ? (
-          <button
-            onClick={() => setIsVisible(true)}
-            className="w-12 h-12 rounded-full bg-surface border border-border hover:bg-surface2 transition-all duration-200 flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            aria-label="Open ambient player"
-          >
-            <Volume2 className="w-5 h-5 text-muted" strokeWidth={2} />
-          </button>
+          <>
+            <button
+              onClick={() => setIsVisible(true)}
+              className="w-12 h-12 rounded-full bg-surface border border-border hover:bg-surface2 transition-all duration-200 flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 relative"
+              aria-label="Open ambient player"
+            >
+              <Volume2 className="w-5 h-5 text-muted" strokeWidth={2} />
+              {isPlaying && (
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+              )}
+            </button>
+            
+            {/* Hint tooltip - shows for first-time visitors */}
+            <div className="absolute bottom-full left-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <div className="bg-surface border border-accent/30 rounded-lg shadow-xl px-3 py-2 whitespace-nowrap">
+                <p className="text-xs text-text font-medium flex items-center gap-1.5">
+                  <span className="text-base">🎵</span>
+                  <span>Background Music</span>
+                </p>
+              </div>
+              <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-surface" />
+            </div>
+          </>
         ) : (
           <div className="bg-surface border border-border rounded-xl shadow-lg p-4 w-64 space-y-3">
             <div className="flex items-center justify-between">

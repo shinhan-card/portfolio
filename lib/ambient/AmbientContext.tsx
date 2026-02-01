@@ -26,10 +26,17 @@ export function AmbientProvider({ children }: { children: ReactNode }) {
     setMounted(true);
   }, []);
 
+  // Auto-resume if user previously enabled
   useEffect(() => {
     if (!mounted || typeof window === "undefined") return;
+    
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === "true") setIsPlaying(true);
+    if (saved === "true") {
+      // Delay slightly to ensure audio element is ready
+      setTimeout(() => {
+        setIsPlaying(true);
+      }, 500);
+    }
   }, [mounted]);
 
   const togglePlay = useCallback(() => {
