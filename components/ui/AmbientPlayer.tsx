@@ -12,23 +12,33 @@ export default function AmbientPlayer() {
   const [volume, setVolume] = useState(0.3);
   const [isMuted, setIsMuted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [showHint, setShowHint] = useState(true);
+  const [showHint, setShowHint] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const hasUserToggled = useRef(false);
 
-  // Hide hint after first interaction or after 10 seconds
+  // Mount detection
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Show hint for first-time visitors, hide after 15 seconds
+  useEffect(() => {
+    if (!mounted) return;
+    
     const hasSeenBGM = localStorage.getItem("bgm-hint-seen");
-    if (hasSeenBGM) {
-      setShowHint(false);
-    } else {
+    if (!hasSeenBGM) {
+      // Show hint after a brief delay
+      setTimeout(() => setShowHint(true), 1000);
+      
+      // Auto-hide after 15 seconds
       const timer = setTimeout(() => {
         setShowHint(false);
         localStorage.setItem("bgm-hint-seen", "true");
-      }, 10000);
+      }, 15000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [mounted]);
 
   // Load preferences from localStorage
   useEffect(() => {
