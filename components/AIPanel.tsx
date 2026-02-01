@@ -315,11 +315,6 @@ export default function AIPanel() {
                       Response
                     </p>
                     {response && !isLoading && (
-                      <span className="text-[11px] text-muted2 font-normal normal-case" aria-hidden>
-                        {t("ai.label.response")}
-                      </span>
-                    )}
-                    {response && !isLoading && (
                       <button
                         onClick={handleCopy}
                         className="flex items-center gap-1.5 px-2 py-1 text-xs text-accent hover:text-accent-2 transition-colors"
@@ -339,7 +334,7 @@ export default function AIPanel() {
                     )}
                   </div>
 
-                  <Card className="p-4 min-h-[120px]">
+                  <Card className="p-4 min-h-[120px] max-h-[400px] overflow-y-auto">
                     {isLoading && (
                       <div className="flex items-center justify-center py-8">
                         <Loader2 className="w-6 h-6 text-accent animate-spin" />

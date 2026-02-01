@@ -97,9 +97,6 @@ export default function AIInlineResponse({
             <div className="flex items-center gap-2">
               <span className="text-sm">{config.icon}</span>
               <h4 className="text-sm font-medium text-text">{config.title}</h4>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
-                {t("ai.label.response")}
-              </span>
             </div>
             {onClose && (
               <button
@@ -112,20 +109,31 @@ export default function AIInlineResponse({
             )}
           </div>
 
-          {/* Content */}
-          {isLoading && (
-            <div className="flex items-center justify-center py-6">
-              <Loader2 className="w-5 h-5 text-accent animate-spin" />
-            </div>
-          )}
+          {/* Content with scroll */}
+          <div className="max-h-[400px] overflow-y-auto">
+            {isLoading && (
+              <div className="flex items-center justify-center py-6">
+                <Loader2 className="w-5 h-5 text-accent animate-spin" />
+              </div>
+            )}
 
-          {error && (
-            <div className="text-sm text-red-500 py-2">{error}</div>
-          )}
+            {error && (
+              <div className="text-sm text-red-500 py-2">{error}</div>
+            )}
 
+            {response && !isLoading && (
+              <div className="text-sm text-text leading-relaxed whitespace-pre-wrap pr-2">
+                {response}
+              </div>
+            )}
+          </div>
+
+          {/* Footer credit */}
           {response && !isLoading && (
-            <div className="text-sm text-text leading-relaxed whitespace-pre-wrap">
-              {response}
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-center text-[10px] text-muted2 italic">
+                Powered by Google Gemini
+              </p>
             </div>
           )}
         </Card>
