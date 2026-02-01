@@ -50,23 +50,13 @@ export default function Hero() {
       <div className="container-premium relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-fade-up">
-            {/* Name — H1, largest, primary */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text mb-4 sm:mb-5 tracking-tight">
-              {t("hero.name")}
-            </h1>
-
-            {/* Role & Company — H2, unified line */}
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-muted mb-6 sm:mb-8">
-              {t("hero.roleCompany")}
-            </h2>
-
-            {/* Tagline — strong single sentence */}
-            <p className="text-base sm:text-lg md:text-xl text-muted2 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
-              {t("hero.tagline")}
+            {/* Overline — small, role & company only */}
+            <p className="text-xs sm:text-sm font-medium text-muted2 mb-6 sm:mb-8 tracking-wide">
+              {t("hero.overline")}
             </p>
 
             {/* Profile photo — circular crop, centered with decorative ring */}
-            <div className="flex justify-center mb-10 sm:mb-12">
+            <div className="flex justify-center mb-8 sm:mb-10">
               <div className="relative group">
                 {/* Decorative rotating ring */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 via-accent/5 to-transparent blur-xl group-hover:blur-2xl transition-all duration-500" />
@@ -89,6 +79,16 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+
+            {/* Main headline — WHAT I DO, structural, calm, confident */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text mb-6 sm:mb-8 max-w-4xl mx-auto leading-tight tracking-tight whitespace-pre-line">
+              {t("hero.value")}
+            </h1>
+
+            {/* Supporting subheadline — explanatory, architectural */}
+            <p className="text-base sm:text-lg md:text-xl text-muted mb-12 sm:mb-14 max-w-3xl mx-auto leading-relaxed font-light whitespace-pre-line">
+              {t("hero.description")}
+            </p>
 
             {/* CTAs — Three options */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

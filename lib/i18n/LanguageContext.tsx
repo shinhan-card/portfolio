@@ -71,10 +71,11 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.downloadResume": "Download Resume",
 
-    // Hero — refactored for clarity and reduced redundancy
-    "hero.name": "Eric Yoon (윤태웅)",
-    "hero.roleCompany": "Manager @ Shinhan Card",
-    "hero.tagline": "Making Fintech Work in Regulated Markets",
+    // Hero — focus on WHAT I DO, not WHO I AM
+    "hero.overline": "Product Manager · Shinhan Card",
+    "hero.value": "Making fintech services that actually work\nunder complex constraints.",
+    "hero.description":
+      "Balancing regulation, security, and organizational reality\nto make technology, people, and processes move together.",
     "hero.cta.primary": "View Resume",
     "hero.cta.secondary": "View Projects",
     "hero.cta.all": "View All Projects",
@@ -218,10 +219,11 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.downloadResume": "이력서",
 
-    // Hero — 간결하고 명확한 구조
-    "hero.name": "윤태웅 (Eric Yoon)",
-    "hero.roleCompany": "Manager @ 신한카드",
-    "hero.tagline": "규제 시장에서 작동하는 핀테크를 만듭니다",
+    // Hero — 무엇을 하는지에 집중
+    "hero.overline": "프로덕트 매니저 · 신한카드",
+    "hero.value": "복잡한 제약 속에서도\n실제로 작동하는 핀테크 서비스를 기획합니다.",
+    "hero.description":
+      "규제·보안·조직 현실을 고려해\n기술과 사람, 프로세스가 함께 움직이게 만듭니다.",
     "hero.cta.primary": "이력 보기",
     "hero.cta.secondary": "주요 프로젝트",
     "hero.cta.all": "전체 프로젝트",
