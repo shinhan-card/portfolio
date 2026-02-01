@@ -22,21 +22,14 @@ export default function AmbientPlayer() {
     setMounted(true);
   }, []);
 
-  // Show hint for first-time visitors, hide after 15 seconds
+  // Show hint for first-time visitors - stays until button clicked
   useEffect(() => {
     if (!mounted) return;
     
     const hasSeenBGM = localStorage.getItem("bgm-hint-seen");
     if (!hasSeenBGM) {
       // Show hint after a brief delay
-      setTimeout(() => setShowHint(true), 1000);
-      
-      // Auto-hide after 15 seconds
-      const timer = setTimeout(() => {
-        setShowHint(false);
-        localStorage.setItem("bgm-hint-seen", "true");
-      }, 15000);
-      return () => clearTimeout(timer);
+      setTimeout(() => setShowHint(true), 1500);
     }
   }, [mounted]);
 
@@ -151,15 +144,16 @@ export default function AmbientPlayer() {
               )}
             </button>
             
-            {/* Hint tooltip - soft hint style */}
+            {/* Hint tooltip - subtle, persistent until clicked */}
             {showHint && (
-              <div className="absolute bottom-full left-0 mb-3 animate-fade-in pointer-events-none max-w-[280px]">
-                <div className="relative bg-accent/95 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2">
-                  <p className="text-xs text-white font-medium leading-relaxed">
-                    <span className="text-sm">🎵</span> 만약 음악이 자동 재생되지 않으면 아래 버튼에서 한번 멈췄다가 다시 재생해주세요 :)
+              <div className="absolute bottom-full left-0 mb-2 animate-fade-in pointer-events-none">
+                <div className="relative bg-surface2/95 backdrop-blur-sm border border-border rounded-md shadow-md px-2.5 py-1.5 max-w-[200px]">
+                  <p className="text-[10px] leading-snug text-muted">
+                    음악 자동재생 안되면<br />
+                    한번 멈췄다 재생해보세요 🎵
                   </p>
                   {/* Arrow pointing down */}
-                  <div className="absolute top-full left-6 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-accent/95" />
+                  <div className="absolute top-full left-4 w-0 h-0 border-l-[5px] border-r-[5px] border-t-[5px] border-l-transparent border-r-transparent border-t-surface2/95" />
                 </div>
               </div>
             )}
