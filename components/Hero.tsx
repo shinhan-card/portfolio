@@ -86,7 +86,7 @@ export default function Hero() {
                     src="/images/profile.png"
                     alt=""
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-[center_20%] scale-90"
                     sizes="(max-width: 768px) 144px, 176px"
                     priority
                   />
