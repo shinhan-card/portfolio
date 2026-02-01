@@ -51,7 +51,7 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-fade-up">
             {/* Overline — small, role & company only */}
-            <p className="text-xs sm:text-sm font-medium text-muted2 mb-6 sm:mb-8 tracking-wide">
+            <p className="text-xs sm:text-sm font-medium text-muted2 mb-6 sm:mb-8 tracking-wide text-center mx-auto max-w-5xl">
               {t("hero.overline")}
             </p>
 

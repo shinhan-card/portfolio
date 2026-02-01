@@ -19,25 +19,25 @@ export default function SubHeroNarrative() {
       </div>
 
       <div className="container-premium max-w-4xl relative z-10">
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-3 sm:space-y-4 text-center">
           {/* Small section label */}
-          <p className="text-xs font-mono uppercase tracking-widest text-muted2 text-center mb-4">
+          <p className="text-xs font-mono uppercase tracking-widest text-muted2 mb-4">
             {t("scope.title")}
           </p>
           
-          {/* Three concrete problem domains */}
-          <div className="space-y-2 text-sm sm:text-base text-muted leading-relaxed">
-            <p className="flex items-start gap-2 justify-center">
-              <span className="text-accent mt-1">•</span>
-              <span className="flex-1 max-w-2xl">{t("scope.line1")}</span>
+          {/* Three working style points - center aligned */}
+          <div className="space-y-2 text-sm sm:text-base text-muted leading-relaxed max-w-3xl mx-auto">
+            <p className="flex items-start gap-2">
+              <span className="text-accent mt-1 flex-shrink-0">•</span>
+              <span className="text-left">{t("scope.line1")}</span>
             </p>
-            <p className="flex items-start gap-2 justify-center">
-              <span className="text-accent mt-1">•</span>
-              <span className="flex-1 max-w-2xl">{t("scope.line2")}</span>
+            <p className="flex items-start gap-2">
+              <span className="text-accent mt-1 flex-shrink-0">•</span>
+              <span className="text-left">{t("scope.line2")}</span>
             </p>
-            <p className="flex items-start gap-2 justify-center">
-              <span className="text-accent mt-1">•</span>
-              <span className="flex-1 max-w-2xl">{t("scope.line3")}</span>
+            <p className="flex items-start gap-2">
+              <span className="text-accent mt-1 flex-shrink-0">•</span>
+              <span className="text-left">{t("scope.line3")}</span>
             </p>
           </div>
         </div>
