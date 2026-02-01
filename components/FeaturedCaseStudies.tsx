@@ -30,11 +30,13 @@ export default function FeaturedCaseStudies() {
   return (
     <Section id="projects" background="gray" separator>
       <div className="text-center mb-12 sm:mb-16">
-        <p className="text-xs font-mono uppercase tracking-widest text-muted2 mb-4">
-          💼 Portfolio
-        </p>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 border border-accent/20 rounded-full mb-4">
+          <span className="text-xs font-medium text-accent uppercase tracking-wide">
+            {t("caseStudies.title")}
+          </span>
+        </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-text px-4">
-          {t("caseStudies.title")}
+          {t("caseStudies.core")}
         </h2>
         <p className="text-base sm:text-lg text-muted max-w-2xl mx-auto px-4">
           {t("caseStudies.subtitle")}

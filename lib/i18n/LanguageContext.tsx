@@ -88,6 +88,21 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.ai": "Explore this portfolio with AI",
     "hero.ai.helper": "AI summarizes the essence of this portfolio.",
 
+    // Sub-Hero Narrative
+    "subhero.line1": "Operating in environments where regulation, security, and organizational constraints intersect.",
+    "subhero.line2": "Making decisions that actually work—not just on paper, but in production.",
+    "subhero.line3": "The work is not just features; it's designing systems that function within real organizations.",
+
+    // Thinking Frame
+    "thinking.title": "How I Approach Problems",
+    "thinking.subtitle": "Patterns I use to navigate complexity",
+    "thinking.constraints.title": "Decision-Making Under Constraints",
+    "thinking.constraints.desc": "Every decision exists within regulatory limits, security requirements, and organizational reality. The goal is not perfect solutions, but workable ones that balance all constraints.",
+    "thinking.systems.title": "System-Level Thinking",
+    "thinking.systems.desc": "Products don't exist in isolation. Understanding how components, teams, and processes interconnect determines whether a solution scales or fragments.",
+    "thinking.organizations.title": "Scaling Within Organizations",
+    "thinking.organizations.desc": "Real adoption requires solving actual pain points, not mandating ideal processes. Build for incremental rollout, not big-bang transformation.",
+
     // Impact Metrics
     "impact.title": "Impact Summary",
     "impact.subtitle":
@@ -106,9 +121,11 @@ const translations: Record<Language, Record<string, string>> = {
       "Led business strategy and KCC accreditation for card-based identity verification; coordinated with regulators, KISA, and issuers",
 
     // Projects (formerly Case Studies)
-    "caseStudies.title": "Projects",
+    "caseStudies.title": "Selected Projects",
     "caseStudies.subtitle":
       "Product initiatives at the intersection of infrastructure, compliance, and user experience",
+    "caseStudies.core": "Core Projects",
+    "caseStudies.supporting": "Supporting Initiatives",
     "caseStudies.readMore": "Read project",
     "caseStudies.viewAll": "View all projects",
     "caseStudies.additionalProjects": "Additional Projects",
@@ -225,6 +242,21 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.ai": "AI로 이 포트폴리오 둘러보기",
     "hero.ai.helper": "AI가 이 포트폴리오의 핵심을 요약해드립니다.",
 
+    // Sub-Hero Narrative
+    "subhero.line1": "규제·보안·조직 제약이 얽힌 환경에서 작동하는 제품을 만듭니다.",
+    "subhero.line2": "종이 위의 이상이 아니라, 실제 운영 가능한 결정을 내립니다.",
+    "subhero.line3": "단순한 기능이 아니라, 조직 안에서 작동하는 시스템을 설계합니다.",
+
+    // Thinking Frame
+    "thinking.title": "문제를 다루는 방식",
+    "thinking.subtitle": "복잡성을 다루는 사고 패턴",
+    "thinking.constraints.title": "제약 조건 하 의사결정",
+    "thinking.constraints.desc": "모든 결정은 규제 한계, 보안 요구사항, 조직 현실 안에 존재합니다. 완벽한 해법이 아니라, 모든 제약을 균형있게 다루는 실행 가능한 해법을 찾습니다.",
+    "thinking.systems.title": "시스템 수준 사고",
+    "thinking.systems.desc": "제품은 고립되어 존재하지 않습니다. 컴포넌트, 팀, 프로세스가 어떻게 연결되는지 이해해야 확장 가능한 솔루션을 만들 수 있습니다.",
+    "thinking.organizations.title": "조직 내 점진적 확산",
+    "thinking.organizations.desc": "실제 도입은 이상적 프로세스 강제가 아니라, 진짜 문제를 해결할 때 일어납니다. 빅뱅 전환이 아닌 단계적 롤아웃을 설계합니다.",
+
     // Impact Summary — 3 cards (승인 한국어)
     "impact.title": "주요 성과",
     "impact.subtitle": "인증 인프라, 규제 대응 제품 설계, 크로스펑셔널 협업",
@@ -242,9 +274,11 @@ const translations: Record<Language, Record<string, string>> = {
       "카드본인확인서비스의 사업 전략과\nKCC 인증심사·기관 협의를 총괄하며 안정적인 서비스 확장을 이끌어옴",
 
     // Case Studies
-    "caseStudies.title": "프로젝트",
+    "caseStudies.title": "대표 프로젝트",
     "caseStudies.subtitle":
       "인프라·규제·고객 경험이 교차하는 영역의 제품 기획",
+    "caseStudies.core": "핵심 프로젝트",
+    "caseStudies.supporting": "지원 이니셔티브",
     "caseStudies.readMore": "자세히 보기",
     "caseStudies.viewAll": "전체 프로젝트",
     "caseStudies.additionalProjects": "추가 프로젝트",

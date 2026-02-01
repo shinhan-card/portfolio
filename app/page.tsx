@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import SubHeroNarrative from "@/components/SubHeroNarrative";
+import ThinkingFrame from "@/components/ThinkingFrame";
 import CareerStats from "@/components/CareerStats";
 import ImpactMetrics from "@/components/ImpactMetrics";
 import FeaturedCaseStudies from "@/components/FeaturedCaseStudies";
@@ -18,9 +20,11 @@ export default function Home() {
       <Header />
       <main id="main-content">
         <Hero />
-        <CareerStats />
+        <SubHeroNarrative />
+        <ThinkingFrame />
         <ImpactMetrics />
         <FeaturedCaseStudies />
+        <CareerStats />
         <Skills />
         <Awards />
         <Contact />
