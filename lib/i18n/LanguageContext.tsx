@@ -142,7 +142,7 @@ const translations: Record<Language, Record<string, string>> = {
     "case2.tag3": "Regulatory Design",
 
     // Skills
-    "skills.title": "Core Expertise",
+    "skills.title": "⚙️ Core Expertise",
     "skills.subtitle":
       "Specialized capabilities at the intersection of product, technology, and regulation",
     "skills.item1": "Payment & Authentication Infrastructure",
