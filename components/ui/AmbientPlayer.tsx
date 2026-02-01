@@ -147,8 +147,8 @@ export default function AmbientPlayer() {
             {/* Hint tooltip - subtle, persistent until clicked */}
             {showHint && (
               <div className="absolute bottom-full left-0 mb-2 animate-fade-in pointer-events-none">
-                <div className="relative bg-surface2/95 backdrop-blur-sm border border-border rounded-md shadow-md px-2.5 py-1.5 max-w-[200px]">
-                  <p className="text-[10px] leading-snug text-muted">
+                <div className="relative bg-surface2/95 backdrop-blur-sm border border-border rounded-md shadow-md px-3 py-2 w-64">
+                  <p className="text-xs leading-relaxed text-muted">
                     음악 자동재생 안되면<br />
                     한번 멈췄다 재생해보세요 🎵
                   </p>

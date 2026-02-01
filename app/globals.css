@@ -47,47 +47,48 @@
   --color-focus: #60a5fa;
 }
 
-/* AI Button Rotating Outer Glow Ring - Premium, subtle */
-@keyframes ai-ring-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* AI Button Subtle Shimmer Glow - Premium, elegant */
+@keyframes ai-shimmer {
+  0%, 100% { 
+    box-shadow: 
+      0 0 8px rgba(168, 85, 247, 0.12),
+      0 0 16px rgba(168, 85, 247, 0.06),
+      inset 0 0 12px rgba(168, 85, 247, 0.04);
+  }
+  50% { 
+    box-shadow: 
+      0 0 12px rgba(168, 85, 247, 0.2),
+      0 0 24px rgba(168, 85, 247, 0.1),
+      inset 0 0 16px rgba(168, 85, 247, 0.08);
+  }
 }
 
-@keyframes ai-ring-pulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.25; }
+@keyframes ai-border-flow {
+  0%, 100% {
+    border-image-source: linear-gradient(135deg, 
+      rgba(168, 85, 247, 0.4), 
+      rgba(139, 92, 246, 0.5), 
+      rgba(99, 102, 241, 0.4)
+    );
+  }
+  50% {
+    border-image-source: linear-gradient(135deg, 
+      rgba(168, 85, 247, 0.6), 
+      rgba(139, 92, 246, 0.7), 
+      rgba(99, 102, 241, 0.6)
+    );
+  }
 }
 
 .ai-button-with-ring {
-  position: relative;
-}
-
-.ai-button-with-ring::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: inherit;
-  padding: 2px;
-  background: conic-gradient(
-    from 0deg,
-    rgba(168, 85, 247, 0) 0deg,
-    rgba(168, 85, 247, 0.3) 90deg,
-    rgba(139, 92, 246, 0.4) 180deg,
-    rgba(99, 102, 241, 0.3) 270deg,
-    rgba(168, 85, 247, 0) 360deg
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: ai-ring-rotate 12s linear infinite, ai-ring-pulse 6s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
+  animation: ai-shimmer 8s ease-in-out infinite;
 }
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .ai-button-with-ring::before {
-    animation: ai-ring-pulse 6s ease-in-out infinite;
+  .ai-button-with-ring {
+    animation: none;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.12), 0 0 16px rgba(168, 85, 247, 0.06);
   }
 }
 
