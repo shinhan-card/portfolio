@@ -70,7 +70,7 @@ export default function KeyboardHint() {
         </div>
         <button
           onClick={handleDismiss}
-          className="text-xs text-accent hover:text-accent2 transition-colors"
+          className="w-full mt-2 px-3 py-2 bg-accent hover:bg-accent-2 text-white text-sm font-medium rounded-lg transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           {text.dismiss}
         </button>

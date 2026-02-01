@@ -78,13 +78,14 @@ export default function Header() {
     >
       <nav className="container-premium" aria-label="Main navigation">
         <div className="flex items-center justify-between h-11">
-          {/* Text logo — subtle */}
+          {/* Text logo — subtle, responsive */}
           <Link
             href="/"
-            className="text-base font-medium text-text hover:text-muted transition-colors tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded"
+            className="text-sm sm:text-base font-medium text-text hover:text-muted transition-colors tracking-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded whitespace-nowrap"
             aria-label={language === "ko" ? "홈" : "Home"}
           >
-            윤태웅 (Eric Yoon)
+            <span className="hidden xs:inline">윤태웅 (Eric Yoon)</span>
+            <span className="inline xs:hidden">윤태웅</span>
           </Link>
 
           {/* Right: nav (desktop only) + CTA + controls (always in main header) */}
