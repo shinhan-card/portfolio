@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Volume2, VolumeX, Play, Pause } from "lucide-react";
+import { Volume2, VolumeX, Play, Pause, Music } from "lucide-react";
 import { useAmbient } from "@/lib/ambient/AmbientContext";
 
 export default function AmbientPlayer() {
@@ -130,31 +130,37 @@ export default function AmbientPlayer() {
                 setShowHint(false);
                 localStorage.setItem("bgm-hint-seen", "true");
               }}
-              className={`w-12 h-12 rounded-full bg-surface border-2 hover:bg-surface2 transition-all duration-200 flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 relative ${
+              className={`w-12 h-12 rounded-full bg-surface border-2 hover:bg-surface2 hover:scale-110 transition-all duration-200 flex items-center justify-center shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 relative ${
                 showHint ? "border-accent/50 animate-pulse" : "border-border"
               }`}
               aria-label="Open ambient player"
             >
-              <Volume2 className="w-5 h-5 text-muted" strokeWidth={2} />
+              <Music className="w-5 h-5 text-muted" strokeWidth={2} />
               {isPlaying && (
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse border-2 border-bg" />
               )}
             </button>
             
-            {/* Hint tooltip - always visible on hover, persistent for first-timers */}
-            {(showHint || isVisible === false) && (
-              <div className={`absolute bottom-full left-0 mb-2 transition-opacity pointer-events-none ${
-                showHint ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-              }`}>
-                <div className="bg-surface border-2 border-accent/40 rounded-lg shadow-xl px-3 py-2 whitespace-nowrap">
-                  <p className="text-xs text-text font-medium flex items-center gap-1.5">
-                    <span className="text-base">🎵</span>
-                    <span>{showHint ? "Click for Music" : "Background Music"}</span>
+            {/* Hint tooltip - soft hint style */}
+            {showHint && (
+              <div className="absolute bottom-full left-0 mb-3 animate-fade-in pointer-events-none">
+                <div className="relative bg-accent/95 backdrop-blur-sm rounded-lg shadow-lg px-3 py-2 whitespace-nowrap">
+                  <p className="text-xs text-white font-medium flex items-center gap-1.5">
+                    <span className="text-sm">🎵</span>
+                    <span>Click for Music</span>
                   </p>
+                  {/* Arrow pointing down */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-accent/95" />
                 </div>
-                <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-[6px] border-l-transparent border-r-transparent border-t-surface" />
               </div>
             )}
+            
+            {/* Hover tooltip - subtle */}
+            <div className="absolute bottom-full left-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <div className="bg-surface2/90 backdrop-blur-sm border border-border rounded-md shadow-md px-2 py-1 whitespace-nowrap">
+                <p className="text-xs text-muted">BGM</p>
+              </div>
+            </div>
           </>
         ) : (
           <div className="bg-surface border border-border rounded-xl shadow-lg p-4 w-64 space-y-3">
