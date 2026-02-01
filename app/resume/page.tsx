@@ -80,24 +80,44 @@ export default function ResumePage() {
       <main className="pt-24 bg-bg">
       <Section background="white">
         <div className="max-w-4xl mx-auto">
-          {/* Back link */}
-          <Link
-            href="/"
-            className="inline-flex items-center text-sm font-medium text-muted hover:text-text mb-8 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-md"
-          >
-            <svg
-              className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Back link and AI Summary */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <Link
+              href="/"
+              className="inline-flex items-center text-sm font-medium text-muted hover:text-text transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-md"
             >
-              <path d="M15 19l-7-7 7-7" />
-            </svg>
-            {t.back}
-          </Link>
+              <svg
+                className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M15 19l-7-7 7-7" />
+              </svg>
+              {t.back}
+            </Link>
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(
+                  new CustomEvent("open-ai-panel", {
+                    detail: {
+                      customPrompt: lang === "ko"
+                        ? "이 사람의 경력과 전문성을 간단히 요약해주세요."
+                        : "Briefly summarize this person's experience and expertise.",
+                    },
+                  })
+                );
+              }}
+              className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+            >
+              <span className="opacity-80">✨</span>
+              <span>{lang === "ko" ? "AI로 경력 요약" : "Summarize experience with AI"}</span>
+            </button>
+          </div>
 
           {/* Header */}
           <div className="mb-16 relative">

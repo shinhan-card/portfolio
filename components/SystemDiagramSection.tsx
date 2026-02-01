@@ -149,14 +149,34 @@ export default function SystemDiagramSection({
           </button>
         </div>
         <p className="text-sm sm:text-base text-muted max-w-3xl">{diagram.description}</p>
-        <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-lg">
-          <span className="text-xs font-mono uppercase tracking-wide text-accent">
-            {diagram.type === "architecture"
-              ? "Architecture"
-              : diagram.type === "flow"
-              ? "Flow Diagram"
-              : "Sequence"}
-          </span>
+        <div className="mt-3 flex flex-wrap items-center gap-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/30 rounded-lg">
+            <span className="text-xs font-mono uppercase tracking-wide text-accent">
+              {diagram.type === "architecture"
+                ? "Architecture"
+                : diagram.type === "flow"
+                ? "Flow Diagram"
+                : "Sequence"}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(
+                new CustomEvent("open-ai-panel", {
+                  detail: {
+                    customPrompt: language === "ko"
+                      ? `${diagram.title} 시스템 다이어그램을 간단히 설명해주세요.`
+                      : `Briefly explain the ${diagram.title} system diagram.`,
+                  },
+                })
+              );
+            }}
+            className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+          >
+            <span className="opacity-80">✨</span>
+            <span>{language === "ko" ? "AI 설명" : "Explain with AI"}</span>
+          </button>
         </div>
       </div>
 

@@ -47,6 +47,29 @@
   --color-focus: #60a5fa;
 }
 
+/* AI Button Glow Animation - Subtle, continuous */
+@keyframes ai-glow {
+  0%, 100% { 
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.15), 0 0 16px rgba(168, 85, 247, 0.08);
+    border-color: rgba(168, 85, 247, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.25), 0 0 24px rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.6);
+  }
+}
+
+.ai-glow-border {
+  animation: ai-glow 8s ease-in-out infinite;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .ai-glow-border {
+    animation: none;
+  }
+}
+
 /* Base styles */
 * {
   box-sizing: border-box;

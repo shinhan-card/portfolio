@@ -137,6 +137,48 @@ export default function CaseStudyContent({
             meta={caseStudy.meta}
           />
 
+          {/* AI Actions */}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(
+                  new CustomEvent("open-ai-panel", {
+                    detail: {
+                      presetId: "summary",
+                      projectContext: caseStudy.slug,
+                    },
+                  })
+                );
+              }}
+              className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+            >
+              <span className="opacity-80">✨</span>
+              <span>{t("ai.project.summary")}</span>
+              <span className="text-[10px] opacity-60">({t("ai.label.response")})</span>
+            </button>
+            {decisions && (
+              <button
+                type="button"
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent("open-ai-panel", {
+                      detail: {
+                        customPrompt: language === "ko"
+                          ? `${getProjectTitle(caseStudy.slug, language)} 프로젝트의 핵심 의사결정과 트레이드오프를 요약해주세요.`
+                          : `Summarize key decisions and trade-offs for ${getProjectTitle(caseStudy.slug, language)}.`,
+                      },
+                    })
+                  );
+                }}
+                className="inline-flex items-center gap-1.5 text-xs text-muted2 hover:text-accent transition-colors border border-border hover:border-accent/30 rounded-md px-3 py-1.5 bg-surface2/50 hover:bg-surface2"
+              >
+                <span className="opacity-80">✨</span>
+                <span>{t("ai.project.decisions")}</span>
+              </button>
+            )}
+          </div>
+
           <div className="flex flex-wrap gap-8 text-sm mt-10">
             <div>
               <p className="font-mono text-xs uppercase tracking-widest text-neutral-500 mb-1 flex items-center gap-2">

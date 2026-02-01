@@ -86,6 +86,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.secondary": "View Projects",
     "hero.cta.all": "View All Projects",
     "hero.cta.ai": "Explore this portfolio with AI",
+    "hero.ai.helper": "AI summarizes the essence of this portfolio.",
 
     // Impact Metrics
     "impact.title": "Impact Summary",
@@ -167,9 +168,13 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.quickLinks": "Quick Links",
     "footer.connect": "Connect",
     "footer.copyright": "All rights reserved.",
-    "footer.aiNote": "AI features on this site use only publicly available portfolio content and are designed not to infer or fabricate information.",
-    "ai.label.response": "AI-assisted (Gemini)",
-    "ai.disclaimer.full": "Responses are generated using only the information published in this portfolio. The AI is designed not to infer or fabricate information.",
+    "footer.aiNote": "The AI features on this site are powered by Google Gemini and operate only on publicly available portfolio content.",
+    "ai.label.response": "Powered by Google Gemini",
+    "ai.disclaimer.full": "Responses are powered by Google Gemini and use only the information published in this portfolio. The AI does not infer or fabricate information.",
+    "ai.project.summary": "AI Summary",
+    "ai.project.decisions": "AI: View Decisions",
+    "ai.project.explain": "Explain with AI",
+    "ai.resume.summary": "Summarize experience with AI",
 
     // Case Study Detail
     "caseDetail.back": "Back to Projects",
@@ -216,6 +221,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.secondary": "주요 프로젝트",
     "hero.cta.all": "전체 프로젝트",
     "hero.cta.ai": "AI로 이 포트폴리오 둘러보기",
+    "hero.ai.helper": "AI가 이 포트폴리오의 핵심을 요약해드립니다.",
 
     // Impact Summary — 3 cards (승인 한국어)
     "impact.title": "주요 성과",
@@ -295,9 +301,13 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.quickLinks": "바로가기",
     "footer.connect": "연락",
     "footer.copyright": "All rights reserved.",
-    "footer.aiNote": "이 사이트의 AI 기능은 공개된 포트폴리오 정보만을 기반으로 작동하며, 사실을 추정하거나 존재하지 않는 정보를 생성하지 않도록 설계되었습니다.",
-    "ai.label.response": "AI(Gemini) 기반 요약",
-    "ai.disclaimer.full": "이 사이트의 AI 기능은 공개된 포트폴리오 정보만을 기반으로 작동하며, 사실을 추정하거나 존재하지 않는 정보를 생성하지 않도록 설계되었습니다.",
+    "footer.aiNote": "이 사이트의 AI 기능은 Google Gemini를 활용해 포트폴리오에 공개된 정보만을 기반으로 작동합니다.",
+    "ai.label.response": "Google Gemini 기반",
+    "ai.disclaimer.full": "이 사이트의 AI 기능은 Google Gemini를 활용해 포트폴리오에 공개된 정보만을 기반으로 작동합니다. AI는 사실을 추정하거나 존재하지 않는 정보를 생성하지 않습니다.",
+    "ai.project.summary": "AI 요약",
+    "ai.project.decisions": "AI로 의사결정 보기",
+    "ai.project.explain": "AI 설명",
+    "ai.resume.summary": "AI로 경력 요약",
 
     // Case Study Detail
     "caseDetail.back": "목록으로",

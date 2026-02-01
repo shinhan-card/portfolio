@@ -22,13 +22,15 @@ export default function AIPanel() {
   const [error, setError] = useState("");
 
   const [pendingPresetId, setPendingPresetId] = React.useState<string | null>(null);
+  const [pendingCustomPrompt, setPendingCustomPrompt] = React.useState<string | null>(null);
 
-  // Listen for open event (optionally with presetId to auto-run e.g. "30s summary")
+  // Listen for open event (optionally with presetId or customPrompt)
   React.useEffect(() => {
     const handleOpen = (e: Event) => {
       setIsOpen(true);
-      const detail = (e as CustomEvent<{ presetId?: string }>)?.detail;
+      const detail = (e as CustomEvent<{ presetId?: string; customPrompt?: string }>)?.detail;
       if (detail?.presetId) setPendingPresetId(detail.presetId);
+      if (detail?.customPrompt) setPendingCustomPrompt(detail.customPrompt);
     };
     window.addEventListener("open-ai-panel", handleOpen);
     return () => window.removeEventListener("open-ai-panel", handleOpen);
@@ -45,6 +47,13 @@ export default function AIPanel() {
       setPendingPresetId(null);
     }
   }, [isOpen, pendingPresetId]);
+
+  // When panel opens with customPrompt, run it once
+  React.useEffect(() => {
+    if (!isOpen || !pendingCustomPrompt) return;
+    handlePreset(pendingCustomPrompt);
+    setPendingCustomPrompt(null);
+  }, [isOpen, pendingCustomPrompt]);
 
   const presets = {
     recruiter:

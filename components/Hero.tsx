@@ -122,7 +122,7 @@ export default function Hero() {
               </Button>
             </div>
             {/* AI entry — subtle, integrated */}
-            <p className="mt-6 text-sm text-muted2">
+            <div className="mt-6 flex flex-col items-center gap-2">
               <button
                 type="button"
                 onClick={() => {
@@ -130,9 +130,9 @@ export default function Hero() {
                     new CustomEvent("open-ai-panel", { detail: { presetId: "summary" } })
                   );
                 }}
-                className="relative inline-flex items-center gap-1.5 text-muted2 hover:text-accent focus:outline-none focus-visible:underline rounded-sm transition-colors px-2 py-1"
+                className="relative inline-flex items-center gap-1.5 text-muted2 hover:text-accent focus:outline-none focus-visible:underline rounded-md transition-colors px-3 py-1.5 ai-glow-border"
                 style={{
-                  border: '1px solid transparent',
+                  border: '1px solid rgba(168, 85, 247, 0.3)',
                   backgroundImage: 'linear-gradient(var(--color-bg), var(--color-bg)), linear-gradient(135deg, #a855f7, #8b5cf6, #6366f1)',
                   backgroundOrigin: 'border-box',
                   backgroundClip: 'padding-box, border-box',
@@ -141,7 +141,10 @@ export default function Hero() {
                 <span className="opacity-80">✨</span>
                 {t("hero.cta.ai")}
               </button>
-            </p>
+              <p className="text-xs text-muted2">
+                {t("hero.ai.helper")}
+              </p>
+            </div>
           </div>
         </div>
       </div>

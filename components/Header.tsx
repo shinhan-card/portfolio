@@ -117,10 +117,10 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => window.dispatchEvent(new Event("open-ai-panel"))}
-                className="relative inline-flex items-center justify-center w-9 h-9 rounded-md text-muted hover:text-text bg-transparent hover:bg-surface2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg group"
+                className="relative inline-flex items-center justify-center w-9 h-9 rounded-md text-muted hover:text-text bg-transparent hover:bg-surface2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg group ai-glow-border"
                 aria-label={language === "ko" ? "AI 도우미" : "AI Assistant"}
                 style={{
-                  border: '1.5px solid transparent',
+                  border: '1.5px solid rgba(168, 85, 247, 0.4)',
                   backgroundImage: 'linear-gradient(var(--color-bg), var(--color-bg)), linear-gradient(135deg, #a855f7, #8b5cf6, #6366f1)',
                   backgroundOrigin: 'border-box',
                   backgroundClip: 'padding-box, border-box',
