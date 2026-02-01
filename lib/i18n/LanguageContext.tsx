@@ -82,10 +82,11 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.ai": "Explore this portfolio with AI",
     "hero.ai.helper": "AI summarizes the essence of this portfolio.",
 
-    // Sub-Hero Narrative
-    "subhero.line1": "Operating in environments where regulation, security, and organizational constraints intersect.",
-    "subhero.line2": "Making decisions that actually work—not just on paper, but in production.",
-    "subhero.line3": "The work is not just features; it's designing systems that function within real organizations.",
+    // Problem Space / Scope (concrete, not philosophical)
+    "scope.title": "Problem Space",
+    "scope.line1": "Authentication infrastructure across high-traffic payment services",
+    "scope.line2": "Regulatory compliance products (KCC accreditation, audits, institutional coordination)",
+    "scope.line3": "Payment flows and Open Banking integrations where regulation, UX, and operations intersect",
 
     // Thinking Frame
     "thinking.title": "How I Approach Problems",
@@ -230,10 +231,11 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.cta.ai": "AI로 이 포트폴리오 둘러보기",
     "hero.ai.helper": "AI가 이 포트폴리오의 핵심을 요약해드립니다.",
 
-    // Sub-Hero Narrative
-    "subhero.line1": "규제·보안·조직 제약이 얽힌 환경에서 작동하는 제품을 만듭니다.",
-    "subhero.line2": "종이 위의 이상이 아니라, 실제 운영 가능한 결정을 내립니다.",
-    "subhero.line3": "단순한 기능이 아니라, 조직 안에서 작동하는 시스템을 설계합니다.",
+    // 문제 영역 / 범위 (구체적)
+    "scope.title": "담당 영역",
+    "scope.line1": "대규모 트래픽 결제 서비스의 인증 인프라",
+    "scope.line2": "규제 대응 제품 (KCC 인증심사, 감사, 기관 협의)",
+    "scope.line3": "규제·UX·운영이 교차하는 결제 플로우 및 오픈뱅킹 연동",
 
     // Thinking Frame
     "thinking.title": "문제를 다루는 방식",
