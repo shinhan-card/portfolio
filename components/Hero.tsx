@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden">
       {/* Hero background image - laptop stickers */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.35] dark:opacity-[0.45]"
         style={{
           backgroundImage: "url('/images/hero/laptop-stickers.png')",
@@ -36,15 +36,15 @@ export default function Hero() {
           transform: `translateY(${gradientY * 0.5}px) scale(1.1)`,
         }}
       />
-      
+
       {/* Gradient overlay for readability */}
       <div
         className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/40 to-bg/70"
       />
-      
+
       {/* Decorative floating emojis */}
-      <FloatingEmojis 
-        emojis={["💳", "🔐", "🚀", "⚡", "🎯", "💡"]} 
+      <FloatingEmojis
+        emojis={["💳", "🔐", "🚀", "⚡", "🎯", "💡"]}
         density="high"
       />
       <div className="container-premium relative z-10">
@@ -60,7 +60,7 @@ export default function Hero() {
               <div className="relative group">
                 {/* Decorative rotating ring */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 via-accent/5 to-transparent blur-xl group-hover:blur-2xl transition-all duration-500" />
-                
+
                 {/* Profile image */}
                 <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden ring-2 ring-accent/20 hover:ring-accent/40 bg-surface2 shrink-0 transition-all duration-300 shadow-xl hover:shadow-2xl">
                   <Image
@@ -72,7 +72,7 @@ export default function Hero() {
                     priority
                   />
                 </div>
-                
+
                 {/* Status badge */}
                 <div className="absolute bottom-2 right-2 w-6 h-6 bg-accent rounded-full ring-4 ring-bg shadow-lg flex items-center justify-center animate-pulse">
                   <span className="text-xs text-white">✓</span>
@@ -80,8 +80,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Main headline — WHAT I DO, structural, calm, confident */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text mb-6 sm:mb-8 max-w-4xl mx-auto leading-tight tracking-tight whitespace-pre-line">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text mb-6 sm:mb-8 max-w-4xl mx-auto leading-tight tracking-tight whitespace-pre-line text-gradient-shinhan">
               {t("hero.value")}
             </h1>
 
